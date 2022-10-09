@@ -4,14 +4,24 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        fadeIn: "fadeIn 600ms ease-in-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+      },
+    },
   },
   plugins: [
     plugin(function ({ addComponents }) {
       addComponents({
         ".container": {
           padding: "10px",
-          width: "1070px",
+          width: "1280px",
           minHeight: "100%",
           margin: "0 auto",
         },
