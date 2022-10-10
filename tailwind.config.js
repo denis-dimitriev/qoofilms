@@ -5,6 +5,14 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "phone-sm": { max: "320px" },
+        phone: { max: "480px" },
+        "tablet-sm": { max: "640px" },
+        tablet: { max: "768px" },
+        "pc-sm": { max: "1024px" },
+        pc: { max: "1280px" },
+      },
       animation: {
         fadeIn: "fadeIn 600ms ease-in-out",
       },
@@ -20,8 +28,8 @@ module.exports = {
     plugin(function ({ addComponents }) {
       addComponents({
         ".container": {
-          padding: "10px",
-          width: "1280px",
+          padding: " 0 10px 0 10px",
+          maxWidth: "1280px",
           minHeight: "100%",
           margin: "0 auto",
         },
