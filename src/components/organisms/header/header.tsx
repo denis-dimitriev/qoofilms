@@ -17,8 +17,8 @@ export const Header = () => {
         <Logo />
         <Search />
         <div className="flex gap-5">
-          <LinkButton linkTo="/authentication/sign-in">Sign In</LinkButton>
-          <LinkButton type="primary" linkTo="/authentication/sign-up">
+          <LinkButton linkTo="/auth/sign-in">Sign In</LinkButton>
+          <LinkButton type="primary" linkTo="/auth/sign-up">
             Sign Up
           </LinkButton>
         </div>

@@ -10,7 +10,8 @@ export const App = () => {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/*" element={<Homepage />} />
-        <Route path="authentication/*" element={<Authentication />}>
+        <Route path="home/*" element={<Homepage />} />
+        <Route path="auth/*" element={<Authentication />}>
           <Route path="sign-in" element={<SignIn />} />
           <Route path="sign-up" element={<SignUp />} />
         </Route>
