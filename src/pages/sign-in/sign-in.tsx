@@ -68,7 +68,7 @@ const SignIn = () => {
       </button>
       <Link
         className="inline-block text-center align-baseline text-sm font-bold text-blue-500 hover:text-blue-800"
-        to="/authentication/sign-up"
+        to="/auth/sign-up"
       >
         Dont have an account?
       </Link>
