@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { defaultNoImage } from "../../../assets/img";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ interface CardProps {
 
 export const Card = ({ thumbnail, title }: CardProps) => {
   return (
-    <div className="group relative h-[250px] w-[190px] overflow-hidden rounded p-1 shadow-lg transition-all">
+    <div className="group relative h-[250px] w-[200px] overflow-hidden rounded p-1 shadow-lg transition-all">
       <Link to="">
         <figure className="h-full w-full">
           <img

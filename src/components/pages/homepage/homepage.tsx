@@ -6,9 +6,9 @@ const Homepage = () => {
   return (
     <div id="homepage" className="container flex flex-col gap-y-5 pt-[70px]">
       <section className="relative h-[300px] w-full phone:text-center">
-        <figure className="h-full w-full bg-gradient-to-r from-gray-800">
+        <figure className="h-full w-full bg-gradient-to-r from-black">
           <img
-            className="h-full w-full object-cover object-top opacity-30"
+            className="h-full w-full object-cover object-top opacity-50"
             src={avatarBanner}
             alt={defaultNoImage}
           />

@@ -10,25 +10,22 @@ interface CarouselProps {
 export const Carousel = ({ movies }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
-  const [itemWidth, setItemWidth] = useState<number>(0);
+  const itemWidth = 200;
 
   useEffect(() => {
     const carouselWindow = document.querySelector("#carousel-list");
-    const carouselItem = document.querySelector("#carousel-list-item");
-    if (carouselWindow && carouselItem) {
+    if (carouselWindow) {
       setCarouselWidth(carouselWindow.clientWidth);
-      setItemWidth(carouselItem.clientWidth);
     }
   }, [pos]);
 
-  const totalWidth = itemWidth * (movies.length - 1);
+  const totalWidth = itemWidth * movies.length;
 
   const onNextClickHandler = () => {
-    const itemPerWindow = Math.floor(carouselWidth / itemWidth);
-    const limitPos = totalWidth - carouselWidth;
+    const limitPos = -Math.abs(totalWidth - carouselWidth - itemWidth);
     console.log(limitPos + " " + pos);
     setPos((prev) => {
-      if (pos > limitPos) {
+      if (pos <= limitPos) {
         return 0;
       }
       return prev - itemWidth;
@@ -36,7 +33,13 @@ export const Carousel = ({ movies }: CarouselProps) => {
   };
 
   const onPrevClickHandler = () => {
-    setPos((prev) => prev + itemWidth);
+    const limitPos = totalWidth - carouselWidth;
+    setPos((prev) => {
+      if (pos >= 0) {
+        return -limitPos;
+      }
+      return prev + itemWidth;
+    });
   };
 
   return (
@@ -53,13 +56,13 @@ export const Carousel = ({ movies }: CarouselProps) => {
         ))}
       </ul>
       <button
-        className="absolute top-[40%] left-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-200  transition-all duration-700 hover:bg-gray-100 "
+        className="absolute top-[40%] left-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
         onClick={onPrevClickHandler}
       >
         <ArrowLeftIcon className="w-[20px]" />
       </button>
       <button
-        className="absolute top-[40%] right-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-200  transition-all duration-700 hover:bg-gray-100"
+        className="absolute top-[40%] right-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
         onClick={onNextClickHandler}
       >
         <ArrowRightIcon className="w-[20px]" />
