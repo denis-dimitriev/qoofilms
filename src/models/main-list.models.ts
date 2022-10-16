@@ -3,7 +3,7 @@ export interface Dates {
   minimum: string;
 }
 
-export interface IUpcoming {
+export interface IMovieList {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -21,9 +21,9 @@ export interface IUpcoming {
 }
 
 export interface ServerResponse<T> {
-  dates: Dates;
-  page: number;
+  dates?: Dates;
+  page?: number;
   results: T[];
-  total_pages: number;
-  total_results: number;
+  total_pages?: number;
+  total_results?: number;
 }

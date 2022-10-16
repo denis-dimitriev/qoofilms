@@ -1,13 +1,13 @@
 import { Card } from "../../molecules/card/card";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../../assets/icons";
-import { useEffect, useState } from "react";
-import { IUpcoming } from "../../../features/main-list/main-list.models";
+import { HTMLProps, useEffect, useState } from "react";
+import { IMovieList } from "../../../models/main-list.models";
 
-interface CarouselProps {
-  movies: IUpcoming[];
+interface CarouselProps extends HTMLProps<HTMLDivElement> {
+  movies: IMovieList[];
 }
 
-export const Carousel = ({ movies }: CarouselProps) => {
+export const Carousel = ({ movies, className }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const itemWidth = 200;
@@ -23,7 +23,6 @@ export const Carousel = ({ movies }: CarouselProps) => {
 
   const onNextClickHandler = () => {
     const limitPos = -Math.abs(totalWidth - carouselWidth - itemWidth);
-    console.log(limitPos + " " + pos);
     setPos((prev) => {
       if (pos <= limitPos) {
         return 0;
@@ -43,7 +42,9 @@ export const Carousel = ({ movies }: CarouselProps) => {
   };
 
   return (
-    <div className="relative max-h-[250px] w-full overflow-hidden">
+    <div
+      className={`${className} relative max-h-[250px] w-full overflow-hidden`}
+    >
       <ul
         id="carousel-list"
         className="transition:transform flex h-full w-full duration-300"
@@ -56,16 +57,16 @@ export const Carousel = ({ movies }: CarouselProps) => {
         ))}
       </ul>
       <button
-        className="absolute top-[40%] left-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
+        className="absolute top-[40%] left-0 z-10 flex h-[40px] w-[40px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
         onClick={onPrevClickHandler}
       >
-        <ArrowLeftIcon className="w-[20px]" />
+        <ArrowLeftIcon className="w-[16px]" />
       </button>
       <button
-        className="absolute top-[40%] right-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
+        className="absolute top-[40%] right-0 z-10 flex h-[40px] w-[40px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
         onClick={onNextClickHandler}
       >
-        <ArrowRightIcon className="w-[20px]" />
+        <ArrowRightIcon className="w-[16px]" />
       </button>
     </div>
   );

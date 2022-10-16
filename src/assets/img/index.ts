@@ -1,4 +1,4 @@
 import avatarBanner from "./avatar.jpg";
-import defaultNoImage from "./default.png";
+import altNoImage from "./no-image.png";
 
-export { avatarBanner, defaultNoImage };
+export { avatarBanner, altNoImage };

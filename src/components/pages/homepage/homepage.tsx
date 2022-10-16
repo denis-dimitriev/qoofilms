@@ -1,6 +1,6 @@
-import { avatarBanner, defaultNoImage } from "../../../assets/img";
+import { altNoImage, avatarBanner } from "../../../assets/img";
 import { Route, Routes } from "react-router-dom";
-import MainList from "../../../features/main-list/main-list";
+import MainList from "../main-list/main-list";
 
 const Homepage = () => {
   return (
@@ -10,7 +10,7 @@ const Homepage = () => {
           <img
             className="h-full w-full object-cover object-top opacity-50"
             src={avatarBanner}
-            alt={defaultNoImage}
+            alt={altNoImage}
           />
         </figure>
         <figcaption className="absolute top-[20%] left-0 w-1/2 p-2 text-gray-100 phone:w-full">
