@@ -13,11 +13,11 @@ const MainList = () => {
   }
 
   return (
-    <div className="h-auto w-full">
-      <Fragment>
+    <div className="flex h-auto w-full flex-col gap-y-2">
+      <div className="flex flex-col gap-y-2">
         <Tag>Upcoming movies</Tag>
         <Carousel movies={upComing} />
-      </Fragment>
+      </div>
     </div>
   );
 };
