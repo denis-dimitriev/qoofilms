@@ -1,6 +1,6 @@
-import { Logo } from "../../components/ui/logo/logo";
+import { Logo } from "../../atoms/ui/logo/logo";
 import { Link, Outlet } from "react-router-dom";
-import { CloseIcon } from "../../assets/icons";
+import { CloseIcon } from "../../../assets/icons";
 
 const Authentication = () => {
   return (

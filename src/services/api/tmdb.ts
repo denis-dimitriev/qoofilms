@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 
-const APIKEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
-
-const tmdbParams = {
+export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
+export const BASE_URL = "https://api.themoviedb.org/3/";
+export const tmdbQueryParams = {
   api_key: "1655ca58bc63dc76eb67fe7a0f9f9ef7",
   lang: "en-US",
 };
@@ -16,14 +16,18 @@ export const tmdbApi = createApi({
     getLatest: builder.query<any, void>({
       query: () => ({
         url: "movie/latest",
-        params: tmdbParams,
+        params: tmdbQueryParams,
       }),
     }),
-    getNowPlaying: builder.query<any, void>({
-      query: () => ({
+    getNowPlaying: builder.query<any, number | void>({
+      query: (pageNumber = 1) => ({
         url: `movie/now_playing`,
-        params: tmdbParams,
+        params: {
+          ...tmdbQueryParams,
+          page: pageNumber,
+        },
       }),
+      //transformResponse: (res) => res?.data?.results,
     }),
   }),
 });

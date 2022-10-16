@@ -1,7 +1,7 @@
-import { Logo } from "../../ui/logo/logo";
+import { Logo } from "../../atoms/ui/logo/logo";
 import { Search } from "../../molecules/search/search";
-import { LinkButton } from "../../ui/link-button/link-button";
-import { useScrollTranslate } from "../../hooks/useScrollTranslate";
+import { LinkButton } from "../../atoms/ui/link-button/link-button";
+import { useScrollTranslate } from "../../../hooks/useScrollTranslate";
 
 export const Header = () => {
   const { translate } = useScrollTranslate();

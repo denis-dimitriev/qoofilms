@@ -14,7 +14,7 @@ export const Card = ({ thumbnail, title }: CardProps) => {
         <figure className="h-full w-full duration-300 ease-in-out hover:opacity-90">
           <img
             className="h-full w-full object-cover object-center"
-            src={thumbnail}
+            src={`https://image.tmdb.org/t/p/original/${thumbnail}`}
             alt={defaultNoImage}
           />
         </figure>

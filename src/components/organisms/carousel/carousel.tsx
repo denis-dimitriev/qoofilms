@@ -1,16 +1,16 @@
-import { avatarBanner } from "../../../assets/img";
 import { Card } from "../../molecules/card/card";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../../assets/icons";
 import { useState } from "react";
+import { IUpcoming } from "../../../features/main-list/main-list.models";
 
 interface CarouselProps {
-  movies: [];
+  movies: IUpcoming[];
 }
 
 export const Carousel = ({ movies }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
 
-  const itemWidth = 195;
+  const itemWidth = 100;
 
   const onNextClickHandler = () => {
     setPos((prev) => prev - itemWidth);
@@ -22,13 +22,14 @@ export const Carousel = ({ movies }: CarouselProps) => {
 
   return (
     <div className="group relative max-h-[250px] w-full overflow-hidden">
-      <ul
-        className="transition:transform flex h-full w-full gap-x-1 duration-300"
-        style={{ transform: `translateX(${pos}px)` }}
-      >
+      <ul className="flex h-full w-full">
         {movies.map((movie) => (
-          <li key={movie}>
-            <Card title={"Avatar"} thumbnail={avatarBanner} />
+          <li
+            className="transition:transform duration-300"
+            key={movie.id}
+            style={{ transform: `translateX(${pos}%)` }}
+          >
+            <Card title={movie.title} thumbnail={movie.backdrop_path} />
           </li>
         ))}
       </ul>

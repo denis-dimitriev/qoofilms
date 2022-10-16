@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { tmdbApi } from "../features/api/tmdb";
+import { tmdbApi } from "../services/api/tmdb";
+import { mainListQuery } from "../features/main-list/main-list.query";
 
 export const store = configureStore({
   reducer: {
     [tmdbApi.reducerPath]: tmdbApi.reducer,
+    [mainListQuery.reducerPath]: mainListQuery.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(tmdbApi.middleware),
+    getDefaultMiddleware()
+      .concat(tmdbApi.middleware)
+      .concat(mainListQuery.middleware),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

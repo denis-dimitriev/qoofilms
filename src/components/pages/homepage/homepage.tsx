@@ -1,19 +1,14 @@
-import { avatarBanner, defaultNoImage } from "../../assets/img";
+import { avatarBanner, defaultNoImage } from "../../../assets/img";
 import { Route, Routes } from "react-router-dom";
-import MainMovieList from "../main-movie-list/main-movie-list";
-import { useGetNowPlayingQuery } from "../../features/api/tmdb";
+import MainList from "../../../features/main-list/main-list";
 
 const Homepage = () => {
-  const { data, error } = useGetNowPlayingQuery();
-
-  console.log(data);
-
   return (
     <div id="homepage" className="container flex flex-col gap-y-5 pt-[70px]">
       <section className="relative h-[300px] w-full phone:text-center">
         <figure className="h-full w-full bg-gradient-to-r from-gray-800">
           <img
-            className="h-full w-full object-cover object-top opacity-20"
+            className="h-full w-full object-cover object-top opacity-30"
             src={avatarBanner}
             alt={defaultNoImage}
           />
@@ -26,7 +21,7 @@ const Homepage = () => {
         </figcaption>
       </section>
       <Routes>
-        <Route index element={<MainMovieList />} />
+        <Route index element={<MainList />} />
       </Routes>
     </div>
   );
