@@ -1,42 +1,24 @@
-import {
-  useGetNowPlayingQuery,
-  useGetPopularQuery,
-  useGetTopRatedQuery,
-  useGetUpcomingQuery,
-} from "../../../services/api/tmdb";
-import { Spinner } from "../../atoms/ui/spinner/spinner";
-import { Tag } from "../../atoms/ui/tag/tag";
-import { Carousel } from "../../organisms/carousel/carousel";
+import { MainMovieList } from "../../organisms/main-movie-list/main-movie-list";
+import { MainTvShowsList } from "../../organisms/main-tv-shows-list/main-tv-shows-list";
+import { Fragment } from "react";
 
 const MainList = () => {
-  const { data: upComing } = useGetUpcomingQuery();
-  const { data: topRated } = useGetTopRatedQuery();
-  const { data: popular } = useGetPopularQuery();
-  const { data: nowPlaying } = useGetNowPlayingQuery();
-
-  if (!upComing || !topRated || !popular || !nowPlaying) {
-    return <Spinner />;
-  }
-
   return (
-    <div className="flex h-auto w-full flex-col gap-y-2">
-      <div className="flex flex-col gap-y-2">
-        <Tag>Upcoming movies</Tag>
-        <Carousel movies={upComing} />
-      </div>
-      <div className="flex flex-col gap-y-2">
-        <Tag>Top Rated</Tag>
-        <Carousel movies={topRated} />
-      </div>
-      <div className="flex flex-col gap-y-2">
-        <Tag>Popular</Tag>
-        <Carousel movies={popular} />
-      </div>
-      <div className="flex flex-col gap-y-2">
-        <Tag>Now playing</Tag>
-        <Carousel movies={nowPlaying} />
-      </div>
-    </div>
+    <Fragment>
+      <h1 className="mb-4 mt-5 text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <span className="bg-gradient-to-r from-sky-400 to-emerald-600 bg-clip-text text-transparent">
+          Best Movies
+        </span>
+      </h1>
+      <MainMovieList />
+
+      <h1 className="mb-4 mt-5 text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <span className="bg-gradient-to-r from-sky-400 to-emerald-600 bg-clip-text text-transparent">
+          Best On TV
+        </span>
+      </h1>
+      <MainTvShowsList />
+    </Fragment>
   );
 };
 

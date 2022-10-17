@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { tmdbApi } from "../services/api/tmdb";
+import { tmdbMovies } from "../services/api/tmdbMovies";
+import { tmdbTVShows } from "../services/api/tmdbTVShows";
 
 export const store = configureStore({
   reducer: {
-    [tmdbApi.reducerPath]: tmdbApi.reducer,
+    [tmdbMovies.reducerPath]: tmdbMovies.reducer,
+    [tmdbTVShows.reducerPath]: tmdbTVShows.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(tmdbApi.middleware),
+    getDefaultMiddleware()
+      .concat(tmdbMovies.middleware)
+      .concat(tmdbTVShows.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

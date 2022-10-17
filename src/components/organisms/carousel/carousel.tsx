@@ -1,13 +1,13 @@
 import { Card } from "../../molecules/card/card";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../../assets/icons";
-import { HTMLProps, useEffect, useState } from "react";
-import { IMovieList } from "../../../models/main-list.models";
+import { useEffect, useState } from "react";
+import { IMovie, ITVShow } from "../../../models/main-list.models";
 
-interface CarouselProps extends HTMLProps<HTMLDivElement> {
-  movies: IMovieList[];
+interface CarouselProps {
+  movies: IMovie[] | ITVShow[];
 }
 
-export const Carousel = ({ movies, className }: CarouselProps) => {
+export const Carousel = ({ movies }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const itemWidth = 200;
@@ -42,9 +42,7 @@ export const Carousel = ({ movies, className }: CarouselProps) => {
   };
 
   return (
-    <div
-      className={`${className} relative max-h-[250px] w-full overflow-hidden`}
-    >
+    <div className="relative max-h-[250px] w-full overflow-hidden">
       <ul
         id="carousel-list"
         className="transition:transform flex h-full w-full duration-300"
@@ -52,7 +50,10 @@ export const Carousel = ({ movies, className }: CarouselProps) => {
       >
         {movies.map((movie) => (
           <li id="carousel-list-item" key={movie.id}>
-            <Card title={movie.title} thumbnail={movie.backdrop_path} />
+            <Card
+              title={"title" in movie ? movie.title : movie.name}
+              thumbnail={movie.backdrop_path}
+            />
           </li>
         ))}
       </ul>

@@ -8,7 +8,7 @@ const Homepage = () => {
       <section className="relative h-[300px] w-full phone:text-center">
         <figure className="h-full w-full bg-gradient-to-r from-black">
           <img
-            className="h-full w-full object-cover object-top opacity-50"
+            className="h-full w-full object-cover object-top opacity-70"
             src={avatarBanner}
             alt={altNoImage}
           />

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IMovieList, ServerResponse } from "../../models/main-list.models";
+import { IMovie, ServerResponse } from "../../models/main-list.models";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
@@ -8,13 +8,13 @@ export const tmdbQueryParams = {
   lang: "en-US",
 };
 
-export const tmdbApi = createApi({
-  reducerPath: "tmdbApi",
+export const tmdbMovies = createApi({
+  reducerPath: "tmdbMovies",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
-    getUpcoming: builder.query<IMovieList[], number | void>({
+    getUpcomingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/movie/upcoming",
         params: {
@@ -22,9 +22,9 @@ export const tmdbApi = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovieList>) => res.results,
+      transformResponse: (res: ServerResponse<IMovie>) => res.results,
     }),
-    getTopRated: builder.query<IMovieList[], number | void>({
+    getTopRatedMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/movie/top_rated",
         params: {
@@ -32,9 +32,9 @@ export const tmdbApi = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovieList>) => res.results,
+      transformResponse: (res: ServerResponse<IMovie>) => res.results,
     }),
-    getPopular: builder.query<IMovieList[], number | void>({
+    getPopularMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/movie/popular",
         params: {
@@ -42,9 +42,9 @@ export const tmdbApi = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovieList>) => res.results,
+      transformResponse: (res: ServerResponse<IMovie>) => res.results,
     }),
-    getNowPlaying: builder.query<IMovieList[], number | void>({
+    getNowPlayingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/movie/now_playing",
         params: {
@@ -52,14 +52,14 @@ export const tmdbApi = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovieList>) => res.results,
+      transformResponse: (res: ServerResponse<IMovie>) => res.results,
     }),
   }),
 });
 
 export const {
-  useGetUpcomingQuery,
-  useGetTopRatedQuery,
-  useGetPopularQuery,
-  useGetNowPlayingQuery,
-} = tmdbApi;
+  useGetUpcomingMoviesQuery,
+  useGetTopRatedMoviesQuery,
+  useGetPopularMoviesQuery,
+  useGetNowPlayingMoviesQuery,
+} = tmdbMovies;

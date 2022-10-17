@@ -27,6 +27,11 @@ module.exports = {
   plugins: [
     plugin(function ({ addComponents }) {
       addComponents({
+        ".layout": {
+          width: "100%",
+          minHeight: "100vh",
+          overflow: "hidden",
+        },
         ".container": {
           padding: " 0 10px 0 10px",
           maxWidth: "1280px",
@@ -41,6 +46,9 @@ module.exports = {
           right: 0,
           zIndex: 100,
           transition: "transform 0.5s cubic-bezier(0.8, 0.2, 0.2, 0.8)",
+        },
+        footer: {
+          marginTop: "auto",
         },
       });
     }),
