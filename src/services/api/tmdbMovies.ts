@@ -29,7 +29,7 @@ export const tmdbMovies = createApi({
   }),
   endpoints: (builder) => ({
     getUpcomingMovies: builder.query<IMovie[], number | void>({
-      query: (pageNumber: number = 1) => ({
+      query: (pageNumber: number) => ({
         url: "/movie/upcoming",
         params: {
           ...tmdbQueryParams,
@@ -39,7 +39,7 @@ export const tmdbMovies = createApi({
       transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
     }),
     getTopRatedMovies: builder.query<IMovie[], number | void>({
-      query: (pageNumber: number = 1) => ({
+      query: (pageNumber: number) => ({
         url: "/movie/top_rated",
         params: {
           ...tmdbQueryParams,
@@ -49,7 +49,7 @@ export const tmdbMovies = createApi({
       transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
     }),
     getPopularMovies: builder.query<IMovie[], number | void>({
-      query: (pageNumber: number = 1) => ({
+      query: (pageNumber: number) => ({
         url: "/movie/popular",
         params: {
           ...tmdbQueryParams,
@@ -59,7 +59,7 @@ export const tmdbMovies = createApi({
       transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
     }),
     getNowPlayingMovies: builder.query<IMovie[], number | void>({
-      query: (pageNumber: number = 1) => ({
+      query: (pageNumber: number) => ({
         url: "/movie/now_playing",
         params: {
           ...tmdbQueryParams,
@@ -73,6 +73,7 @@ export const tmdbMovies = createApi({
 
 export const {
   useGetUpcomingMoviesQuery,
+  useLazyGetUpcomingMoviesQuery,
   useGetTopRatedMoviesQuery,
   useGetPopularMoviesQuery,
   useGetNowPlayingMoviesQuery,

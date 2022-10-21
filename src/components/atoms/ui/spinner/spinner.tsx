@@ -1,8 +1,13 @@
-export const Spinner = () => {
+import { HTMLProps } from "react";
+
+interface SpinnerProps extends HTMLProps<HTMLDivElement> {}
+
+export const Spinner = ({ className }: SpinnerProps) => {
   return (
-    <div role="status">
+    <div role="status" className={`${className} flex flex-col items-center justify-center`}>
       <svg
-        className="mr-2 inline h-10 w-10 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
+        aria-hidden="true"
+        className="mr-2 h-8 w-8 animate-spin fill-blue-600 text-gray-200"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +21,7 @@ export const Spinner = () => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">Loading...</span>
+      <span className="">Loading...</span>
     </div>
   );
 };
