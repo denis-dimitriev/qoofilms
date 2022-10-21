@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { InputText } from "../../atoms/ui/input-text/input-text";
+import { InputText } from "../../components/atoms/ui/input-text/input-text";
 import { Link } from "react-router-dom";
 
 interface ISignIn {

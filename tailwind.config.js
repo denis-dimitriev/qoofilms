@@ -35,11 +35,11 @@ module.exports = {
         ".container": {
           padding: " 0 10px 0 10px",
           maxWidth: "1280px",
+          minWidth: "320px",
           minHeight: "100%",
           margin: "0 auto",
         },
         header: {
-          backgroundColor: "#002f34",
           position: "fixed",
           top: 0,
           left: 0,

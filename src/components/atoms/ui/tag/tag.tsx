@@ -1,11 +1,11 @@
-import { HTMLProps, ReactNode } from "react";
+import { ReactNode } from "react";
 
-interface TagProps extends HTMLProps<HTMLHeadingElement> {
+interface TagProps {
   children: ReactNode;
 }
 
 export const Tag = ({ children }: TagProps) => {
   return (
-    <h1 className="text-2xl font-bold leading-8 text-gray-700">{children}</h1>
+    <h1 className="flex items-center gap-2 text-2xl font-bold leading-8 text-gray-700 tablet:text-xl">{children}</h1>
   );
 };

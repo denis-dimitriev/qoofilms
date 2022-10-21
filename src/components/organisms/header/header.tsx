@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <header
-      className="h-[70px] w-full text-white"
+      className="h-[70px] w-full bg-gray-900 text-white"
       style={{
         transform: translate ? "translateY(-100%)" : "translateY(0)",
       }}
@@ -18,7 +18,7 @@ export const Header = () => {
         <Search />
         <div className="flex gap-5">
           <LinkButton linkTo="/auth/sign-in">Sign In</LinkButton>
-          <LinkButton type="primary" linkTo="/auth/sign-up">
+          <LinkButton type="ghost" linkTo="/auth/sign-up">
             Sign Up
           </LinkButton>
         </div>

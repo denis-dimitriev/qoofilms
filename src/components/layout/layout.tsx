@@ -4,7 +4,7 @@ import { Footer } from "../organisms/footer/footer";
 
 export const Layout = () => {
   return (
-    <div className="layout flex flex-col gap-y-[50px]">
+    <div id="layout" className="layout relative flex flex-col gap-y-[50px]">
       <Header />
       <main>
         <Outlet />

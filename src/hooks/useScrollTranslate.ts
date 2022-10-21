@@ -9,13 +9,13 @@ export const useScrollTranslate = () => {
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
-    const homepage = document.getElementById("homepage");
-    homepage?.addEventListener("wheel", (e) => {
+    const layout = document.getElementById("layout");
+    layout?.addEventListener("wheel", (e) => {
       timeout = setTimeout(() => handleScroll(e), 100);
     });
 
     return () => {
-      homepage?.removeEventListener("wheel", handleScroll);
+      layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);
     };
   }, []);
