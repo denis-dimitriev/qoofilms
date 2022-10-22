@@ -1,4 +1,4 @@
-import { Logo } from "../../components/atoms/ui/logo/logo";
+import { Logo } from "../../components/atoms";
 import { Link, Outlet } from "react-router-dom";
 import { CloseIcon } from "../../assets/icons";
 

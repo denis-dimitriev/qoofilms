@@ -4,9 +4,9 @@ import {
   useGetTopRatedMoviesQuery,
   useGetUpcomingMoviesQuery,
 } from "../../../services/api/tmdbMovies";
-import { Tag } from "../../atoms/ui/tag/tag";
+import { Tag } from "../../atoms";
 import { Carousel } from "../carousel/carousel";
-import { LinkBadge } from "../../atoms/ui/link-badge/link-badge";
+import { LinkBadge } from "../../atoms";
 
 export const MainMovieList = () => {
   const { isLoading: upComingLoading, data: upComing } = useGetUpcomingMoviesQuery();
@@ -27,19 +27,19 @@ export const MainMovieList = () => {
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Top Rated <LinkBadge link={""}>See more</LinkBadge>
+          Top Rated <LinkBadge link="/home/top-rated-movies">See more</LinkBadge>
         </Tag>
         {topRated && <Carousel movies={topRated} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Popular <LinkBadge link={""}>See more</LinkBadge>
+          Popular <LinkBadge link="/home/popular-movies">See more</LinkBadge>
         </Tag>
         {popular && <Carousel movies={popular} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Now playing <LinkBadge link={""}>See more</LinkBadge>
+          Now playing <LinkBadge link="/home/now-playing-movies">See more</LinkBadge>
         </Tag>
         {nowPlaying && <Carousel movies={nowPlaying} />}
       </div>

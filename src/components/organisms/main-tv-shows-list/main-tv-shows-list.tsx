@@ -1,11 +1,11 @@
-import { Tag } from "../../atoms/ui/tag/tag";
+import { Tag } from "../../atoms";
 import { Carousel } from "../carousel/carousel";
 import {
   useGetOnTheAirShowsQuery,
   useGetPopularShowsQuery,
   useGetTopRatedShowsQuery,
 } from "../../../services/api/tmdbTVShows";
-import { LinkBadge } from "../../atoms/ui/link-badge/link-badge";
+import { LinkBadge } from "../../atoms";
 
 export const MainTvShowsList = () => {
   const { isLoading: popularLoading, data: popular } = useGetPopularShowsQuery();
@@ -18,21 +18,21 @@ export const MainTvShowsList = () => {
     <div className={`flex h-auto w-full flex-col gap-y-2 ${blurEffect && "blur-xl"}`}>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          On the air <LinkBadge link={""}>See more</LinkBadge>
+          On the air <LinkBadge link="/home/tv-on-the-air">See more</LinkBadge>
         </Tag>
         {onTheAir && <Carousel movies={onTheAir} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Top Rated
-          <LinkBadge link={""}>See more</LinkBadge>
+          <LinkBadge link="/home/tv-top-rated">See more</LinkBadge>
         </Tag>
         {topRated && <Carousel movies={topRated} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Popular
-          <LinkBadge link={""}>See more</LinkBadge>
+          <LinkBadge link="/home/tv-popular">See more</LinkBadge>
         </Tag>
         {popular && <Carousel movies={popular} />}
       </div>

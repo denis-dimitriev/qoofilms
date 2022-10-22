@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { ITVShow, ServerResponse } from "../../models/main-list.models";
+import { ITVShow, ServerResponse } from "../../types/app.types";
 import { BASE_IMAGE_URL, BASE_POSTER_URL, BASE_URL, tmdbQueryParams } from "./tmdbMovies";
 
 const transformResultWithImages = (arr: ITVShow[]) => {

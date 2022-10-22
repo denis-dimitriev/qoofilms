@@ -43,3 +43,5 @@ export interface ServerResponse<T> {
   total_pages?: number;
   total_results?: number;
 }
+
+export type MovieTypes = IMovie[] | ITVShow[];

@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import { InputText } from "../../components/atoms/ui/input-text/input-text";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { InputText } from "../../components/atoms";
 import { Link } from "react-router-dom";
 
 interface ISignUp {
@@ -37,9 +37,7 @@ const SignUp = () => {
     });
   };
 
-  const onConfirmPasswordInputHandler = (
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
+  const onConfirmPasswordInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSignUp((state) => {
       return {
@@ -58,17 +56,11 @@ const SignUp = () => {
   };
 
   return (
-    <form
-      className="mt-5 flex w-full flex-col justify-between p-[10px]"
-      onSubmit={onSubmit}
-    >
+    <form className="mt-5 flex w-full flex-col justify-between p-[10px]" onSubmit={onSubmit}>
       <div className="mb-6 ">
         <InputText label="Email" onChange={onEmailInputHandler} />
         <InputText label="Password" onChange={onPasswordInputHandler} />
-        <InputText
-          label="Confirm Password"
-          onChange={onConfirmPasswordInputHandler}
-        />
+        <InputText label="Confirm Password" onChange={onConfirmPasswordInputHandler} />
       </div>
       <button
         className=" focus:shadow-outline mb-6 w-full rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"

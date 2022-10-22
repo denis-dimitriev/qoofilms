@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { InputText } from "../../components/atoms/ui/input-text/input-text";
+import { InputText } from "../../components/atoms";
 import { Link } from "react-router-dom";
 
 interface ISignIn {
@@ -44,21 +44,10 @@ const SignIn = () => {
   };
 
   return (
-    <form
-      className="mt-5 flex w-full flex-col justify-between p-[10px]"
-      onSubmit={onSubmit}
-    >
+    <form className="mt-5 flex w-full flex-col justify-between p-[10px]" onSubmit={onSubmit}>
       <div className="mb-6">
-        <InputText
-          label="Email"
-          value={signIn.email}
-          onChange={onEmailInputHandler}
-        />
-        <InputText
-          label="Password"
-          value={signIn.password}
-          onChange={onPasswordInputHandler}
-        />
+        <InputText label="Email" value={signIn.email} onChange={onEmailInputHandler} />
+        <InputText label="Password" value={signIn.password} onChange={onPasswordInputHandler} />
       </div>
       <button
         className=" focus:shadow-outline mb-6 w-full rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700 focus:outline-none"

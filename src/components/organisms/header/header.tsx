@@ -1,10 +1,10 @@
-import { Logo } from "../../atoms/ui/logo/logo";
-import { Search } from "../../molecules/search/search";
-import { LinkButton } from "../../atoms/ui/link-button/link-button";
-import { useScrollTranslate } from "../../../hooks/useScrollTranslate";
+import { Logo } from "../../atoms";
+import { SearchForm } from "../../molecules";
+import { LinkButton } from "../../atoms";
+import { useScrollTranslateElement } from "../../../hooks/useScrollTranslateElement";
 
 export const Header = () => {
-  const { translate } = useScrollTranslate();
+  const { translate } = useScrollTranslateElement();
 
   return (
     <header
@@ -15,7 +15,7 @@ export const Header = () => {
     >
       <div className="container flex items-center justify-between gap-[10%]">
         <Logo />
-        <Search />
+        <SearchForm />
         <div className="flex gap-5">
           <LinkButton linkTo="/auth/sign-in">Sign In</LinkButton>
           <LinkButton type="ghost" linkTo="/auth/sign-up">

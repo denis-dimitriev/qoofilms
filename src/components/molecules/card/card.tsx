@@ -1,4 +1,3 @@
-import React from "react";
 import { altNoImage } from "../../../assets/img";
 import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";

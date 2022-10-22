@@ -1,7 +1,7 @@
-import { MainMovieList } from "../../components/organisms/main-movie-list/main-movie-list";
-import { MainTvShowsList } from "../../components/organisms/main-tv-shows-list/main-tv-shows-list";
 import { Fragment } from "react";
-import { MainBanner } from "../../components/organisms/main-banner/main-banner";
+import { MainMovieList } from "../../components/organisms";
+import { MainTvShowsList } from "../../components/organisms";
+import { MainBanner } from "../../components/organisms";
 
 const MainList = () => {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useScrollTranslate = () => {
+export const useScrollTranslateElement = () => {
   const [translate, setTranslate] = useState<boolean>(false);
 
   const handleScroll = (event: WheelEvent) => {
