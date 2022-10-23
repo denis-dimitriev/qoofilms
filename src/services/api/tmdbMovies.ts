@@ -73,7 +73,6 @@ export const tmdbMovies = createApi({
 
 export const {
   useGetUpcomingMoviesQuery,
-  useLazyGetUpcomingMoviesQuery,
   useGetTopRatedMoviesQuery,
   useGetPopularMoviesQuery,
   useGetNowPlayingMoviesQuery,

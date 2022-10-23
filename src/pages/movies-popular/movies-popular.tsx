@@ -1,5 +1,5 @@
 import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useGetPopularMoviesQuery, useGetUpcomingMoviesQuery } from "../../services/api/tmdbMovies";
+import { useGetPopularMoviesQuery } from "../../services/api/tmdbMovies";
 import { useCombineData } from "../../hooks/useCombineData";
 import { Spinner } from "../../components/atoms";
 import { Error } from "../../components/atoms";

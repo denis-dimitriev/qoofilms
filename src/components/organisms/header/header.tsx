@@ -1,6 +1,5 @@
 import { Logo } from "../../atoms";
 import { SearchForm } from "../../molecules";
-import { LinkButton } from "../../atoms";
 import { useScrollTranslateElement } from "../../../hooks/useScrollTranslateElement";
 
 export const Header = () => {
@@ -16,12 +15,6 @@ export const Header = () => {
       <div className="container flex items-center justify-between gap-[10%]">
         <Logo />
         <SearchForm />
-        <div className="flex gap-5">
-          <LinkButton linkTo="/auth/sign-in">Sign In</LinkButton>
-          <LinkButton type="ghost" linkTo="/auth/sign-up">
-            Sign Up
-          </LinkButton>
-        </div>
       </div>
     </header>
   );

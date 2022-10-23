@@ -7,6 +7,7 @@ import MoviesNowPlaying from "../movies-now-playing/movies-now-playing";
 import TvOnTheAir from "../tv-on-the-air/tv-on-the-air";
 import TvTopRated from "../tv-top-rated/tv-top-rated";
 import TvPopular from "../tv-popular/tv-popular";
+import SearchResult from "../search-result/search-result";
 
 const Homepage = () => {
   return (
@@ -20,6 +21,7 @@ const Homepage = () => {
         <Route path="tv-on-the-air" element={<TvOnTheAir />} />
         <Route path="tv-top-rated" element={<TvTopRated />} />
         <Route path="tv-popular" element={<TvPopular />} />
+        <Route path="search/:title" element={<SearchResult />} />
       </Routes>
     </div>
   );

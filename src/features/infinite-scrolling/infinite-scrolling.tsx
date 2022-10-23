@@ -6,6 +6,7 @@ import { Card } from "../../components/molecules";
 interface InfiniteScrollingProps {
   data: IMovie[] | ITVShow[];
   fetchNextPageData: () => void;
+
 }
 
 const InfiniteScrolling = ({ data, fetchNextPageData }: InfiniteScrollingProps) => {
