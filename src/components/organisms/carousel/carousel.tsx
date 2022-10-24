@@ -10,7 +10,7 @@ interface CarouselProps {
 export const Carousel = ({ movies }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
-  const itemWidth = 200;
+  const itemWidth = 220;
 
   useEffect(() => {
     const carouselWindow = document.querySelector("#carousel-list");

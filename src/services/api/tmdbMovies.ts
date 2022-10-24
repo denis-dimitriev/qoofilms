@@ -10,7 +10,7 @@ export const tmdbQueryParams = {
   lang: "en-US",
 };
 
-const transformResultWithImages = (arr: IMovie[]) => {
+export const transformMovieResultWithImages = (arr: IMovie[]) => {
   return arr.map((el) => {
     if (el.backdrop_path) {
       el.backdrop_path = `${BASE_IMAGE_URL}${el.backdrop_path}`;
@@ -36,7 +36,7 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
     }),
     getTopRatedMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -46,7 +46,7 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
     }),
     getPopularMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -56,7 +56,7 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
     }),
     getNowPlayingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -66,7 +66,7 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
     }),
   }),
 });

@@ -9,7 +9,7 @@ interface CardProps {
 
 export const Card = ({ thumbnail, title }: CardProps) => {
   return (
-    <div className="group relative h-[250px] w-[200px] overflow-hidden rounded p-1 shadow-lg transition-all">
+    <div className="group relative h-[250px] w-[220px] overflow-hidden rounded p-1 shadow-lg transition-all">
       <Link to="">
         <figure className="h-full w-full">
           <LazyLoadImage

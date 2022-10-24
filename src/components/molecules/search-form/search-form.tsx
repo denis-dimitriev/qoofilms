@@ -1,26 +1,27 @@
 import { SearchIcon } from "../../../assets/icons";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import { useSearchMoviesQuery } from "../../../services/api/tmdbSearch";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { addSearchValue } from "../../../features/search/search.slice";
 
 export const SearchForm = () => {
-  const [term, setTerm] = useState<string>("");
+  const { searchValue } = useAppSelector((state) => state.movieSearch);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const { data } = useSearchMoviesQuery(
-    { term, pageNumber: 1 },
-    {
-      skip: term.length < 3,
-    }
-  );
+  const { data } = useSearchMoviesQuery(searchValue, {
+    skip: searchValue.length < 1,
+  });
 
-  const onSubmit = (event: FormEvent) => {
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setTerm("");
+    navigate(`/home/search/${searchValue}`);
   };
 
   const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setTerm(value);
+    dispatch(addSearchValue(value));
   };
 
   return (
@@ -29,21 +30,20 @@ export const SearchForm = () => {
         <input
           list="search"
           type="text"
-          value={term}
+          value={searchValue}
           className="w-full rounded p-2 text-black"
           placeholder="Search..."
           onChange={onInputChangeHandler}
         />
-        <Link to={`/home/search/${term}`}>
-          <button
-            className="group absolute top-0 right-0 flex h-full w-[50px] items-center justify-center bg-gray-300 text-center transition-all hover:bg-gray-600"
-            type="submit"
-          >
-            <SearchIcon className="w-[20px] group-hover:fill-white" />
-          </button>
-        </Link>
+        <button
+          className="group absolute top-0 right-0 flex h-full w-[50px] items-center justify-center bg-gray-300 text-center transition-all hover:bg-gray-600"
+          type="submit"
+          disabled={searchValue.length < 1}
+        >
+          <SearchIcon className="w-[20px] group-hover:fill-white" />
+        </button>
         <datalist id="search">
-          {data?.results.map((res) => (
+          {data?.map((res) => (
             <option key={res.id} value={res.title}>
               {res.title}
             </option>
