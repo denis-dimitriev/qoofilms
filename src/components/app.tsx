@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./layout/layout";
-import Homepage from "../pages/homepage/homepage";
+import { Homepage } from "../pages/homepage/homepage";
 import { TabletMenu } from "./organisms";
 import { useAppSelector } from "../hooks/redux";
 

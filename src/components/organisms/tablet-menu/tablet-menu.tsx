@@ -29,13 +29,13 @@ export const TabletMenu = () => {
                 <Link to="#">Popular</Link>
               </li>
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Top Rated</Link>
+                <Link to="/home/top-rated-movies">Top Rated</Link>
               </li>
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Up Coming</Link>
+                <Link to="/home/upcoming-movies">Up Coming</Link>
               </li>
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Now Playing</Link>
+                <Link to="/home/now-playing-movies">Now Playing</Link>
               </li>
             </ul>
           </div>
@@ -43,16 +43,13 @@ export const TabletMenu = () => {
             TV Shows
             <ul className="text-sm">
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Popular</Link>
+                <Link to="/home/tv-popular">Popular</Link>
               </li>
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Top Rated</Link>
+                <Link to="/home/tv-top-rated">Top Rated</Link>
               </li>
               <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Up Coming</Link>
-              </li>
-              <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-                <Link to="#">Now Playing</Link>
+                <Link to="/home/tv-on-the-air">On the air</Link>
               </li>
             </ul>
           </div>

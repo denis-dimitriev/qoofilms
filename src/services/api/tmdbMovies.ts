@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IMovie, ServerResponse } from "../../types/app.types";
+import { IMovieDetails } from "../../types/movie-details";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
@@ -13,10 +14,10 @@ export const tmdbQueryParams = {
 export const transformMovieResultWithImages = (arr: IMovie[]) => {
   return arr.map((el) => {
     if (el.backdrop_path) {
-      el.backdrop_path = `${BASE_IMAGE_URL}${el.backdrop_path}`;
+      el.backdrop_path = BASE_IMAGE_URL.concat(el.backdrop_path);
     }
     if (el.poster_path) {
-      el.poster_path = `${BASE_POSTER_URL}${el.poster_path}`;
+      el.poster_path = BASE_POSTER_URL.concat(el.poster_path);
     }
     return el;
   });
@@ -36,7 +37,8 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
     }),
     getTopRatedMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -46,7 +48,8 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
     }),
     getPopularMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -56,7 +59,8 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
     }),
     getNowPlayingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
@@ -66,7 +70,21 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
+    }),
+    getMovieDetails: builder.query<IMovieDetails, number | void>({
+      query: (movieId: number) => ({
+        url: `/movie/${movieId}`,
+        params: tmdbQueryParams,
+      }),
+      transformResponse: (res: IMovieDetails) => {
+        return {
+          ...res,
+          backdrop_path: BASE_IMAGE_URL.concat(res.backdrop_path),
+          poster_path: BASE_POSTER_URL.concat(res.poster_path),
+        };
+      },
     }),
   }),
 });
@@ -76,4 +94,5 @@ export const {
   useGetTopRatedMoviesQuery,
   useGetPopularMoviesQuery,
   useGetNowPlayingMoviesQuery,
+  useLazyGetMovieDetailsQuery,
 } = tmdbMovies;

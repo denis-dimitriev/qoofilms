@@ -7,12 +7,13 @@ import TvOnTheAir from "../tv-on-the-air/tv-on-the-air";
 import TvTopRated from "../tv-top-rated/tv-top-rated";
 import TvPopular from "../tv-popular/tv-popular";
 import SearchResult from "../search-result/search-result";
+import ItemDetails from "../item-details/item-details";
 
-const Homepage = () => {
+export const Homepage = () => {
   return (
     <div id="homepage" className="container flex flex-col gap-y-5 pt-[70px]">
       <Routes>
-        {/*<Route index element={<MainList />} />*/}
+        {/* <Route index element={<MainList />} />*/}
         <Route path="upcoming-movies" element={<MoviesUpcoming />} />
         <Route path="top-rated-movies" element={<MoviesTopRated />} />
         <Route path="popular-movies" element={<MoviesPopular />} />
@@ -22,8 +23,7 @@ const Homepage = () => {
         <Route path="tv-popular" element={<TvPopular />} />
         <Route path="search/:title" element={<SearchResult />} />
       </Routes>
+      <ItemDetails />
     </div>
   );
 };
-
-export default Homepage;

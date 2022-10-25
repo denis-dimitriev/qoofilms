@@ -1,5 +1,5 @@
 import { SearchIcon } from "../../../assets/icons";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, KeyboardEvent } from "react";
 import { useSearchMoviesQuery } from "../../../services/api/tmdbSearch";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
@@ -24,6 +24,12 @@ export const SearchForm = () => {
     dispatch(addSearchValue(value));
   };
 
+  const onKeyPressHandler = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      navigate(`/home/search/${searchValue}`);
+    }
+  };
+
   return (
     <form className="relative w-[50%] tablet:w-[90%]" onSubmit={onSubmit}>
       <div className="relative w-full focus-within:shadow-gray-50">
@@ -32,8 +38,10 @@ export const SearchForm = () => {
           type="text"
           value={searchValue}
           className="w-full rounded px-4 py-2 text-black"
-          placeholder="Search..."
+          placeholder="Search movie..."
+          autoComplete="off"
           onChange={onInputChangeHandler}
+          onKeyDown={onKeyPressHandler}
         />
         <button
           className="group absolute top-0 right-0 flex h-full w-[50px] items-center justify-center bg-gray-300 text-center transition-all hover:bg-gray-600"
