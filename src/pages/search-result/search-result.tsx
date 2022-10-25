@@ -27,18 +27,16 @@ const SearchResult = () => {
   }
 
   return (
-    <div className="flex flex-col">
-      <div className="flex w-full flex-col items-center gap-y-5">
-        <Title>Search Result</Title>
-        <div className="flex flex-wrap justify-center gap-2">
-          {data?.map((movie) => (
-            <Card
-              key={movie.id}
-              thumbnail={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
-              title={movie.title}
-            />
-          ))}
-        </div>
+    <div className="flex w-full flex-col items-center gap-y-5">
+      <Title>Search Result</Title>
+      <div className="flex flex-wrap justify-center gap-2">
+        {data?.map((movie) => (
+          <Card
+            key={movie.id}
+            thumbnail={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
+            title={movie.title}
+          />
+        ))}
       </div>
     </div>
   );

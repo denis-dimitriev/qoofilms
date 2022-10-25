@@ -25,13 +25,13 @@ export const SearchForm = () => {
   };
 
   return (
-    <form className="relative w-[50%]" onSubmit={onSubmit}>
+    <form className="relative w-[50%] tablet:w-[90%]" onSubmit={onSubmit}>
       <div className="relative w-full focus-within:shadow-gray-50">
         <input
           list="search"
           type="text"
           value={searchValue}
-          className="w-full rounded p-2 text-black"
+          className="w-full rounded px-4 py-2 text-black"
           placeholder="Search..."
           onChange={onInputChangeHandler}
         />

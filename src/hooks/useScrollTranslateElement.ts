@@ -10,10 +10,13 @@ export const useScrollTranslateElement = () => {
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
     const layout = document.getElementById("layout");
-    layout?.addEventListener("wheel", (e) => {
-      timeout = setTimeout(() => handleScroll(e), 100);
-    });
-
+    const layoutHeight = layout?.offsetHeight;
+    const windowsHeight = window.innerHeight;
+    if (layout && layoutHeight && layoutHeight > windowsHeight) {
+      layout.addEventListener("wheel", (e) => {
+        timeout = setTimeout(() => handleScroll(e), 100);
+      });
+    }
     return () => {
       layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);

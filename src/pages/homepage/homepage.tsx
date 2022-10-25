@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import MainList from "../main-list/main-list";
 import MoviesUpcoming from "../movies-upcoming/movies-upcoming";
 import MoviesTopRated from "../movies-top-rated/movies-top-rated";
 import MoviesPopular from "../movies-popular/movies-popular";
@@ -13,7 +12,7 @@ const Homepage = () => {
   return (
     <div id="homepage" className="container flex flex-col gap-y-5 pt-[70px]">
       <Routes>
-        <Route index element={<MainList />} />
+        {/*<Route index element={<MainList />} />*/}
         <Route path="upcoming-movies" element={<MoviesUpcoming />} />
         <Route path="top-rated-movies" element={<MoviesTopRated />} />
         <Route path="popular-movies" element={<MoviesPopular />} />

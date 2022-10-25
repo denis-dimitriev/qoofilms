@@ -14,12 +14,12 @@ module.exports = {
         pc: { max: "1280px" },
       },
       animation: {
-        fadeIn: "fadeIn 600ms ease-in-out",
+        fadeIn: "fadeIn 300ms ease-in-out",
       },
       keyframes: {
         fadeIn: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(0)" },
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },
@@ -36,7 +36,6 @@ module.exports = {
           padding: " 0 10px 0 10px",
           maxWidth: "1280px",
           minWidth: "320px",
-          minHeight: "100%",
           margin: "0 auto",
         },
         header: {
