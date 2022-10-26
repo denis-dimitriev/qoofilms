@@ -8,7 +8,7 @@ export const App = () => {
   const { isOpen } = useAppSelector((state) => state.mobileMenu);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {isOpen && <TabletMenu />}
       <Routes>
         <Route element={<Layout />}>

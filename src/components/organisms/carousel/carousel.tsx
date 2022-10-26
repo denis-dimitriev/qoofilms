@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { IMovie, ITVShow } from "../../../types/app.types";
 
 interface CarouselProps {
-  movies: IMovie[] | ITVShow[];
+  list: IMovie[] | ITVShow[];
 }
 
-export const Carousel = ({ movies }: CarouselProps) => {
+export const Carousel = ({ list }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const itemWidth = 220;
@@ -19,7 +19,7 @@ export const Carousel = ({ movies }: CarouselProps) => {
     }
   }, [pos]);
 
-  const totalWidth = itemWidth * movies.length;
+  const totalWidth = itemWidth * list.length;
 
   const onNextClickHandler = () => {
     const limitPos = -Math.abs(totalWidth - carouselWidth - itemWidth);
@@ -48,11 +48,13 @@ export const Carousel = ({ movies }: CarouselProps) => {
         className="transition:transform flex h-full w-full duration-300"
         style={{ transform: `translateX(${pos}px)` }}
       >
-        {movies.map((movie) => (
+        {list.map((movie) => (
           <li id="carousel-list-item" key={movie.id}>
             <Card
               title={"title" in movie ? movie.title : movie.name}
-              thumbnail={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
+              thumbnail={
+                movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+              }
             />
           </li>
         ))}

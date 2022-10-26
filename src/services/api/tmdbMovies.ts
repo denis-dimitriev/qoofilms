@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IMovie, ServerResponse } from "../../types/app.types";
 import { IMovieDetails } from "../../types/movie-details";
+import { ServerCreditsResponse } from "../../types/movie-credits";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
@@ -73,7 +74,7 @@ export const tmdbMovies = createApi({
       transformResponse: (res: ServerResponse<IMovie>) =>
         transformMovieResultWithImages(res.results),
     }),
-    getMovieDetails: builder.query<IMovieDetails, number | void>({
+    getMovieDetails: builder.query<IMovieDetails, number>({
       query: (movieId: number) => ({
         url: `/movie/${movieId}`,
         params: tmdbQueryParams,
@@ -86,6 +87,24 @@ export const tmdbMovies = createApi({
         };
       },
     }),
+    getMovieCredits: builder.query<ServerCreditsResponse, number>({
+      query: (movieId: number) => ({
+        url: `/movie/${movieId}/credits`,
+        params: tmdbQueryParams,
+      }),
+      transformResponse: (res: ServerCreditsResponse) => {
+        const castWithImages = res.cast.map((actor) => {
+          if (actor.profile_path) {
+            actor.profile_path = BASE_POSTER_URL.concat(actor.profile_path);
+          }
+          return actor;
+        });
+        return {
+          ...res,
+          cast: castWithImages,
+        };
+      },
+    }),
   }),
 });
 
@@ -95,4 +114,5 @@ export const {
   useGetPopularMoviesQuery,
   useGetNowPlayingMoviesQuery,
   useLazyGetMovieDetailsQuery,
+  useLazyGetMovieCreditsQuery,
 } = tmdbMovies;

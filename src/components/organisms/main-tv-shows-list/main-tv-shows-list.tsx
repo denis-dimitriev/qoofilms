@@ -1,40 +1,46 @@
-import { Tag } from "../../atoms";
+import { LinkBadge, Tag } from "../../atoms";
 import { Carousel } from "../carousel/carousel";
 import {
   useGetOnTheAirShowsQuery,
   useGetPopularShowsQuery,
   useGetTopRatedShowsQuery,
 } from "../../../services/api/tmdbTVShows";
-import { LinkBadge } from "../../atoms";
 
 export const MainTvShowsList = () => {
-  const { isLoading: popularLoading, data: popular } = useGetPopularShowsQuery();
-  const { isLoading: topRatedLoading, data: topRated } = useGetTopRatedShowsQuery();
-  const { isLoading: onTheAieLoading, data: onTheAir } = useGetOnTheAirShowsQuery();
+  const { isLoading: popularLoading, data: popular } =
+    useGetPopularShowsQuery();
+  const { isLoading: topRatedLoading, data: topRated } =
+    useGetTopRatedShowsQuery();
+  const { isLoading: onTheAieLoading, data: onTheAir } =
+    useGetOnTheAirShowsQuery();
 
   const blurEffect = onTheAieLoading || topRatedLoading || popularLoading;
 
   return (
-    <div className={`flex h-auto w-full flex-col gap-y-2 ${blurEffect && "blur-xl"}`}>
+    <div
+      className={`flex h-auto w-full flex-col gap-y-2 ${
+        blurEffect && "blur-xl"
+      }`}
+    >
       <div className="flex flex-col gap-y-2">
         <Tag>
           On the air <LinkBadge link="/home/tv-on-the-air">See more</LinkBadge>
         </Tag>
-        {onTheAir && <Carousel movies={onTheAir} />}
+        {onTheAir && <Carousel list={onTheAir} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Top Rated
           <LinkBadge link="/home/tv-top-rated">See more</LinkBadge>
         </Tag>
-        {topRated && <Carousel movies={topRated} />}
+        {topRated && <Carousel list={topRated} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Popular
           <LinkBadge link="/home/tv-popular">See more</LinkBadge>
         </Tag>
-        {popular && <Carousel movies={popular} />}
+        {popular && <Carousel list={popular} />}
       </div>
     </div>
   );
