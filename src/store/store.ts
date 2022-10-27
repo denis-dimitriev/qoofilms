@@ -4,6 +4,7 @@ import { tmdbTVShows } from "../services/api/tmdbTVShows";
 import { tmdbSearch } from "../services/api/tmdbSearch";
 import searchSlice from "../features/search/search.slice";
 import mobileMenuSlice from "../features/mobile-menu/mobile-menu.slice";
+import gallerySlice from "../features/gallery/gallery.slice";
 
 export const store = configureStore({
   reducer: {
@@ -12,9 +13,13 @@ export const store = configureStore({
     [tmdbSearch.reducerPath]: tmdbSearch.reducer,
     movieSearch: searchSlice,
     mobileMenu: mobileMenuSlice,
+    gallery: gallerySlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(tmdbMovies.middleware).concat(tmdbTVShows.middleware).concat(tmdbSearch.middleware),
+    getDefaultMiddleware()
+      .concat(tmdbMovies.middleware)
+      .concat(tmdbTVShows.middleware)
+      .concat(tmdbSearch.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

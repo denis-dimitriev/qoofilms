@@ -1,8 +1,7 @@
-import { Logo } from "../../atoms";
-import { CloseIcon } from "../../../assets/icons";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/redux";
 import { closeMobileMenu } from "../../../features/mobile-menu/mobile-menu.slice";
+import { CloseButton, Logo } from "../../atoms";
 
 export const TabletMenu = () => {
   const dispatch = useAppDispatch();
@@ -14,9 +13,7 @@ export const TabletMenu = () => {
       <div className="mt-2 flex min-h-screen w-[280px] animate-fadeIn flex-col bg-gray-900 p-[10px] text-white">
         <div className="flex items-center justify-between">
           <Logo onClick={onCloseMobileMenuHandler} />
-          <button onClick={onCloseMobileMenuHandler}>
-            <CloseIcon className="h-[20px] w-[20px] fill-white" />
-          </button>
+          <CloseButton onClick={onCloseMobileMenuHandler} />
         </div>
         <nav className="mt-[50px]">
           <div className="mb-5">

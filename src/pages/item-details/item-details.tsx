@@ -7,7 +7,10 @@ import { useEffect } from "react";
 import { Error, Spinner, Tag } from "../../components/atoms";
 import { StarIcon } from "../../assets/icons";
 import { altNoImage } from "../../assets/img";
-import { ICast, ICrew } from "../../types/movie-credits";
+import { ICrew } from "../../types/movie-credits";
+import { BackdropList } from "../../components/molecules";
+import { PosterList } from "../../components/molecules/poster-list/poster-list";
+import { CastList } from "../../components/molecules/cast-list/cast-list";
 
 export const ItemDetails = () => {
   const [fetchMovie, { data: movie, isLoading, error, isError }] =
@@ -44,15 +47,14 @@ export const ItemDetails = () => {
   const year = movie.release_date.substring(0, 4);
   const voteAvg = movie.vote_average.toString().substring(0, 3);
 
-  const topActors: ICast[] | undefined = credits?.cast.slice(0, 10);
   const topCrew: ICrew[] | undefined = credits?.crew.slice(0, 10);
 
   return (
     <div className="relative mt-5 h-full w-full">
       <div className="flex gap-[30px] tablet-sm:flex-col tablet-sm:items-center tablet:flex-wrap">
-        <div className="flex h-full h-full w-[300px] flex-col tablet:w-full tablet:justify-center">
+        <div className="flex h-full w-[300px] flex-col tablet:w-full">
           <img
-            className="h-[450px] w-[300px] object-cover object-center shadow-2xl"
+            className="m-auto h-[450px] w-[300px] object-cover object-center shadow-2xl"
             src={movie.poster_path ? movie.poster_path : movie.backdrop_path}
             alt={altNoImage}
           />
@@ -99,7 +101,7 @@ export const ItemDetails = () => {
             </li>
           </ul>
           <h3 className="mt-3 font-bold">Crew</h3>
-          <ul className="flex w-3/4 flex-wrap tablet-sm:justify-center">
+          <ul className="flex w-full flex-wrap tablet-sm:justify-center">
             {topCrew?.map((job) => (
               <li
                 key={`${job.id} + ${job.department}`}
@@ -113,56 +115,13 @@ export const ItemDetails = () => {
         </div>
 
         {/* Cast */}
-        <div className="flex h-[700px] w-[130px] flex-col items-start overflow-scroll scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-500 tablet-sm:w-full tablet-sm:justify-center">
-          <Tag>Top cast</Tag>
-          <ul className="flex flex-col tablet-sm:flex-row tablet-sm:flex-wrap">
-            {topActors?.map((actor) => (
-              <li key={`${actor.id + actor.name}`} className="w-[100px] p-2">
-                <div className="flex flex-col">
-                  <img
-                    className="h-full w-full"
-                    src={actor.profile_path}
-                    alt={altNoImage}
-                  />
-                  <span className="text-sm font-bold">{actor.name}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {credits && <CastList cast={credits.cast} />}
       </div>
 
       {/* Backdrops */}
-      <div className="flex flex-col">
-        <Tag>Backdrops</Tag>
-        <ul className="mt-1 flex gap-x-5 overflow-x-scroll scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900">
-          {movieImages?.backdrops.map((backdrop) => (
-            <li key={backdrop.file_path} className="h-[180px] min-w-[300px]">
-              <img
-                className="h-[170px] w-full object-contain"
-                src={backdrop.file_path}
-                alt=""
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
+      {movieImages && <BackdropList backdrops={movieImages.backdrops} />}
       {/* Posters */}
-      <div className="mt-5 flex flex-col">
-        <Tag>Posters</Tag>
-        <ul className="mt-1 flex gap-x-2 overflow-x-scroll scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900">
-          {movieImages?.posters.map((backdrop) => (
-            <li key={backdrop.file_path} className="h-[310px] min-w-[200px]">
-              <img
-                className="h-[300px] w-full object-contain"
-                src={backdrop.file_path}
-                alt=""
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {movieImages && <PosterList posters={movieImages.posters} />}
     </div>
   );
 };

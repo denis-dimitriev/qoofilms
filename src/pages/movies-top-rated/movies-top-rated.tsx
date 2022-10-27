@@ -1,9 +1,7 @@
 import { useGetTopRatedMoviesQuery } from "../../services/api/tmdbMovies";
 import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { Spinner } from "../../components/atoms";
-import { Error } from "../../components/atoms";
-import { Title } from "../../components/atoms";
-import InfiniteScrolling from "../../features/infinite-scrolling/infinite-scrolling";
+import { Error, Spinner, Title } from "../../components/atoms";
+import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
 import { useCombineData } from "../../hooks/useCombineData";
 
 const MoviesTopRated = () => {
@@ -24,7 +22,10 @@ const MoviesTopRated = () => {
     <div className="flex flex-col">
       <div className="flex w-full flex-col items-center gap-y-5">
         <Title>Top Rated</Title>
-        <InfiniteScrolling data={topRatedList} fetchNextPageData={scrollNextPage} />
+        <InfiniteScrolling
+          data={topRatedList}
+          fetchNextPageData={scrollNextPage}
+        />
       </div>
     </div>
   );

@@ -1,9 +1,7 @@
 import { useScrollNextPage } from "../../hooks/useScrollNextPage";
 import { useCombineData } from "../../hooks/useCombineData";
-import { Spinner } from "../../components/atoms";
-import { Error } from "../../components/atoms";
-import { Title } from "../../components/atoms";
-import InfiniteScrolling from "../../features/infinite-scrolling/infinite-scrolling";
+import { Error, Spinner, Title } from "../../components/atoms";
+import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
 import { useGetOnTheAirShowsQuery } from "../../services/api/tmdbTVShows";
 
 const TvOnTheAir = () => {
@@ -23,7 +21,10 @@ const TvOnTheAir = () => {
     <div className="flex flex-col">
       <div className="flex w-full flex-col items-center gap-y-5">
         <Title>On the Air</Title>
-        <InfiniteScrolling data={onTheAirList} fetchNextPageData={scrollNextPage} />
+        <InfiniteScrolling
+          data={onTheAirList}
+          fetchNextPageData={scrollNextPage}
+        />
       </div>
     </div>
   );

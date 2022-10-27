@@ -5,11 +5,11 @@ import { TabletMenu } from "./organisms";
 import { useAppSelector } from "../hooks/redux";
 
 export const App = () => {
-  const { isOpen } = useAppSelector((state) => state.mobileMenu);
+  const { isOpen: isOpenMenu } = useAppSelector((state) => state.mobileMenu);
 
   return (
     <div className="overflow-hidden">
-      {isOpen && <TabletMenu />}
+      {isOpenMenu && <TabletMenu />}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/*" element={<Homepage />} />

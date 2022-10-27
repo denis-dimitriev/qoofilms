@@ -1,9 +1,7 @@
 import { useGetUpcomingMoviesQuery } from "../../services/api/tmdbMovies";
 import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import InfiniteScrolling from "../../features/infinite-scrolling/infinite-scrolling";
-import { Spinner } from "../../components/atoms";
-import { Error } from "../../components/atoms";
-import { Title } from "../../components/atoms";
+import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
+import { Error, Spinner, Title } from "../../components/atoms";
 import { useCombineData } from "../../hooks/useCombineData";
 
 const MoviesUpcoming = () => {
@@ -23,7 +21,10 @@ const MoviesUpcoming = () => {
     <div className="flex flex-col">
       <div className="flex w-full flex-col items-center gap-y-5">
         <Title>Up Coming</Title>
-        <InfiniteScrolling data={upComingList} fetchNextPageData={scrollNextPage} />
+        <InfiniteScrolling
+          data={upComingList}
+          fetchNextPageData={scrollNextPage}
+        />
       </div>
     </div>
   );

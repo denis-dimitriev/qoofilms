@@ -3,9 +3,12 @@ import { Footer, Header } from "../organisms";
 
 export const Layout = () => {
   return (
-    <div id="layout" className="layout relative flex flex-col gap-y-[50px]">
+    <div
+      id="layout"
+      className="layout relative flex flex-col gap-y-[50px] overflow-hidden"
+    >
       <Header />
-      <main>
+      <main className="overflow-hidden">
         <Outlet />
       </main>
       <Footer />

@@ -1,15 +1,17 @@
-import { IMovie, ITVShow } from "../../types/app.types";
+import { IMovie, ITVShow } from "../../../types/app.types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Spinner } from "../../components/atoms";
-import { Card } from "../../components/molecules";
+import { Spinner } from "../../atoms";
+import { Card } from "../../molecules";
 
 interface InfiniteScrollingProps {
   data: IMovie[] | ITVShow[];
   fetchNextPageData: () => void;
-
 }
 
-const InfiniteScrolling = ({ data, fetchNextPageData }: InfiniteScrollingProps) => {
+const InfiniteScrolling = ({
+  data,
+  fetchNextPageData,
+}: InfiniteScrollingProps) => {
   return (
     <InfiniteScroll
       className="flex flex-col gap-y-5"
@@ -22,7 +24,9 @@ const InfiniteScrolling = ({ data, fetchNextPageData }: InfiniteScrollingProps) 
         {data.map((movie) => (
           <Card
             key={movie.id}
-            thumbnail={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
+            thumbnail={
+              movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+            }
             title={"title" in movie ? movie.title : movie.name}
           />
         ))}
