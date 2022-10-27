@@ -2,11 +2,12 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { IMovie, ServerResponse } from "../../types/app.types";
 import { IMovieDetails } from "../../types/movie-details";
 import { ServerCreditsResponse } from "../../types/movie-credits";
+import { ServerImagesResponse } from "../../types/movie-images";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
-export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original/";
-export const BASE_POSTER_URL = "https://image.tmdb.org/t/p/w500/";
+export const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/original";
+export const BASE_POSTER_URL = "https://image.tmdb.org/t/p/w500";
 export const tmdbQueryParams = {
   api_key: API_KEY,
   lang: "en-US",
@@ -32,7 +33,7 @@ export const tmdbMovies = createApi({
   endpoints: (builder) => ({
     getUpcomingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
-        url: "/movie/upcoming",
+        url: "movie/upcoming",
         params: {
           ...tmdbQueryParams,
           page: pageNumber,
@@ -43,7 +44,7 @@ export const tmdbMovies = createApi({
     }),
     getTopRatedMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
-        url: "/movie/top_rated",
+        url: "movie/top_rated",
         params: {
           ...tmdbQueryParams,
           page: pageNumber,
@@ -54,7 +55,7 @@ export const tmdbMovies = createApi({
     }),
     getPopularMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
-        url: "/movie/popular",
+        url: "movie/popular",
         params: {
           ...tmdbQueryParams,
           page: pageNumber,
@@ -65,7 +66,7 @@ export const tmdbMovies = createApi({
     }),
     getNowPlayingMovies: builder.query<IMovie[], number | void>({
       query: (pageNumber: number) => ({
-        url: "/movie/now_playing",
+        url: "movie/now_playing",
         params: {
           ...tmdbQueryParams,
           page: pageNumber,
@@ -76,7 +77,7 @@ export const tmdbMovies = createApi({
     }),
     getMovieDetails: builder.query<IMovieDetails, number>({
       query: (movieId: number) => ({
-        url: `/movie/${movieId}`,
+        url: `movie/${movieId}`,
         params: tmdbQueryParams,
       }),
       transformResponse: (res: IMovieDetails) => {
@@ -89,7 +90,7 @@ export const tmdbMovies = createApi({
     }),
     getMovieCredits: builder.query<ServerCreditsResponse, number>({
       query: (movieId: number) => ({
-        url: `/movie/${movieId}/credits`,
+        url: `movie/${movieId}/credits`,
         params: tmdbQueryParams,
       }),
       transformResponse: (res: ServerCreditsResponse) => {
@@ -105,6 +106,23 @@ export const tmdbMovies = createApi({
         };
       },
     }),
+    getMovieImages: builder.query<ServerImagesResponse, number>({
+      query: (movieId: number) => ({
+        url: `movie/${movieId}/images`,
+        params: tmdbQueryParams,
+      }),
+      transformResponse: (res: ServerImagesResponse) => {
+        res.backdrops.map((item) => {
+          return (item.file_path = BASE_IMAGE_URL.concat(item.file_path));
+        });
+        res.posters.map((item) => {
+          return (item.file_path = BASE_POSTER_URL.concat(item.file_path));
+        });
+        return {
+          ...res,
+        };
+      },
+    }),
   }),
 });
 
@@ -115,4 +133,5 @@ export const {
   useGetNowPlayingMoviesQuery,
   useLazyGetMovieDetailsQuery,
   useLazyGetMovieCreditsQuery,
+  useLazyGetMovieImagesQuery,
 } = tmdbMovies;
