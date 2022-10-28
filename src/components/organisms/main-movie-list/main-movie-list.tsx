@@ -29,29 +29,27 @@ export const MainMovieList = () => {
       <div className="flex flex-col gap-y-2">
         <Tag>
           Upcoming movies
-          <LinkBadge link="/home/upcoming-movies">See more</LinkBadge>
+          <LinkBadge link="movies/upcoming">See more</LinkBadge>
         </Tag>
-        {upComing && <Carousel list={upComing} />}
+        {upComing && <Carousel list={upComing} linkPath={"movies"} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Top Rated{" "}
-          <LinkBadge link="/home/top-rated-movies">See more</LinkBadge>
+          Top Rated <LinkBadge link="movies/top-rated">See more</LinkBadge>
         </Tag>
-        {topRated && <Carousel list={topRated} />}
+        {topRated && <Carousel list={topRated} linkPath={"movies"} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Popular <LinkBadge link="/home/popular-movies">See more</LinkBadge>
+          Popular <LinkBadge link="movies/popular">See more</LinkBadge>
         </Tag>
-        {popular && <Carousel list={popular} />}
+        {popular && <Carousel list={popular} linkPath={"movies"} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
-          Now playing{" "}
-          <LinkBadge link="/home/now-playing-movies">See more</LinkBadge>
+          Now playing <LinkBadge link="movies/now-playing">See more</LinkBadge>
         </Tag>
-        {nowPlaying && <Carousel list={nowPlaying} />}
+        {nowPlaying && <Carousel list={nowPlaying} linkPath={"movies"} />}
       </div>
     </div>
   );

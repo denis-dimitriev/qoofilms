@@ -1,19 +1,6 @@
-import { Route, Routes } from "react-router-dom";
-import { Layout } from "./layout/layout";
 import { useAppSelector } from "../hooks/redux";
 import { Fragment, useEffect } from "react";
-import {
-  Homepage,
-  MainList,
-  MoviesNowPlaying,
-  MoviesPopular,
-  MoviesTopRated,
-  MoviesUpcoming,
-  SearchResult,
-  TvOnTheAir,
-  TvPopular,
-  TvTopRated,
-} from "./pages";
+import { TvShowDetails } from "./pages";
 import { MobileMenu } from "./molecules";
 
 export const App = () => {
@@ -31,21 +18,18 @@ export const App = () => {
   return (
     <Fragment>
       {MobileMenuOpen && <MobileMenu />}
-      <Routes>
+      {/* <Routes>
         <Route element={<Layout />}>
           <Route path="/*" element={<Homepage />}>
             <Route index element={<MainList />} />
-            <Route path="movies-upcoming" element={<MoviesUpcoming />} />
-            <Route path="movies-top-rated" element={<MoviesTopRated />} />
-            <Route path="movies-popular" element={<MoviesPopular />} />
-            <Route path="movies-now-playing" element={<MoviesNowPlaying />} />
-            <Route path="tv-on-the-air" element={<TvOnTheAir />} />
-            <Route path="tv-top-rated" element={<TvTopRated />} />
-            <Route path="tv-popular" element={<TvPopular />} />
-            <Route path="search/:title" element={<SearchResult />} />
+            <Route path="movies/*" element={<Movies />} />
+            <Route path="tv-shows" element={<TVShows />} />
+            <Route path="tv-shows/*" element={<TVShows />} />
+            <Route path="search/:title" element={<Search />} />
           </Route>
         </Route>
-      </Routes>
+      </Routes>*/}
+      <TvShowDetails />
     </Fragment>
   );
 };

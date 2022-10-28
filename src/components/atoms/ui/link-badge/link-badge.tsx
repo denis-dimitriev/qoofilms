@@ -9,7 +9,7 @@ interface LinkBadgeProps {
 export const LinkBadge = ({ children, link }: LinkBadgeProps) => {
   return (
     <Link
-      className="flex max-h-[20px] items-center rounded-3xl bg-emerald-900 px-2 text-[12px] font-light text-white transition-colors hover:bg-gray-600"
+      className="flex max-h-[20px] items-center rounded-3xl bg-emerald-900 px-2 text-[10px] font-light text-white transition-colors hover:bg-gray-600"
       to={link}
     >
       {children}

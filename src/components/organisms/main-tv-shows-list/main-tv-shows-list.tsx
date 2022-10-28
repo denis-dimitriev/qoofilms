@@ -24,21 +24,21 @@ export const MainTvShowsList = () => {
     >
       <div className="flex flex-col gap-y-2">
         <Tag>
-          On the air <LinkBadge link="/home/tv-on-the-air">See more</LinkBadge>
+          On the air <LinkBadge link="tv-shows/on-the-air">See more</LinkBadge>
         </Tag>
         {onTheAir && <Carousel list={onTheAir} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Top Rated
-          <LinkBadge link="/home/tv-top-rated">See more</LinkBadge>
+          <LinkBadge link="tv-shows/top-rated">See more</LinkBadge>
         </Tag>
         {topRated && <Carousel list={topRated} />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Popular
-          <LinkBadge link="/home/tv-popular">See more</LinkBadge>
+          <LinkBadge link="tv-shows/popular">See more</LinkBadge>
         </Tag>
         {popular && <Carousel list={popular} />}
       </div>

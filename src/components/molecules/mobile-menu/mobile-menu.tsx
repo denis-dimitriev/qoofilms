@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../../hooks/redux";
 import { closeMobileMenu } from "../../../features/mobile-menu/mobile-menu.slice";
 import { CloseButton, Logo } from "../../atoms";
-import { moviesLinks, tvShowLinks } from "../../../app-routes";
+import { moviesLinks, tvShowLinks } from "../../routes/app-links";
 
 export const MobileMenu = () => {
   const dispatch = useAppDispatch();

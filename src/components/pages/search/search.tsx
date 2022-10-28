@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useAppSelector } from "../../../hooks/redux";
 import { Card } from "../../molecules";
 
-export const SearchResult = () => {
+export const Search = () => {
   const { searchValue } = useAppSelector((state) => state.movieSearch);
   const [search, { data, isLoading, isError, error }] =
     useLazySearchMoviesQuery();

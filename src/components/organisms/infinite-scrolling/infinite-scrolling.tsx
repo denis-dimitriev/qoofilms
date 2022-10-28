@@ -25,7 +25,7 @@ const InfiniteScrolling = ({
           <Card
             key={movie.id}
             thumbnail={
-              movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+              movie.poster_path ? movie.poster_path : movie.backdrop_path
             }
             title={"title" in movie ? movie.title : movie.name}
           />

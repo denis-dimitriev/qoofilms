@@ -6,33 +6,33 @@ type LinksType = {
 export const moviesLinks: LinksType[] = [
   {
     name: "Popular",
-    path: "movies-popular",
+    path: "movies/popular",
   },
   {
     name: "Top Rated",
-    path: "movies-top-rated",
+    path: "movies/top-rated",
   },
   {
     name: "Up Coming",
-    path: "movies-upcoming",
+    path: "movies/upcoming",
   },
   {
     name: "Now Playing",
-    path: "now-playing",
+    path: "movies/now-playing",
   },
 ];
 
 export const tvShowLinks: LinksType[] = [
   {
     name: "Popular",
-    path: "tv-popular",
+    path: "tv-shows/popular",
   },
   {
     name: "On The Air",
-    path: "tv-on-the-air",
+    path: "tv-shows/on-the-air",
   },
   {
     name: "Now Playing",
-    path: "now-playing",
+    path: "tv-shows/now-playing",
   },
 ];

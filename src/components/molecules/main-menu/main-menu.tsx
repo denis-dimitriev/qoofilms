@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { moviesLinks, tvShowLinks } from "../../../app-routes";
+import { moviesLinks, tvShowLinks } from "../../routes/app-links";
 
 export const MainMenu = () => {
   return (

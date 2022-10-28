@@ -2,12 +2,14 @@ import { Card } from "../../molecules";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../../assets/icons";
 import { useEffect, useState } from "react";
 import { IMovie, ITVShow } from "../../../types/app.types";
+import { Link } from "react-router-dom";
 
 interface CarouselProps {
   list: IMovie[] | ITVShow[];
+  linkPath?: string;
 }
 
-export const Carousel = ({ list }: CarouselProps) => {
+export const Carousel = ({ list, linkPath }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
   const itemWidth = 220;
@@ -42,7 +44,7 @@ export const Carousel = ({ list }: CarouselProps) => {
   };
 
   return (
-    <div className="relative max-h-[250px] w-full overflow-hidden">
+    <div className="relative h-[300px] w-full overflow-hidden">
       <ul
         id="carousel-list"
         className="transition:transform flex h-full w-full duration-300"
@@ -50,26 +52,28 @@ export const Carousel = ({ list }: CarouselProps) => {
       >
         {list.map((movie) => (
           <li id="carousel-list-item" key={movie.id}>
-            <Card
-              title={"title" in movie ? movie.title : movie.name}
-              thumbnail={
-                movie.poster_path ? movie.poster_path : movie.backdrop_path
-              }
-            />
+            <Link to={`${linkPath}/${movie.id}`}>
+              <Card
+                title={"title" in movie ? movie.title : movie.name}
+                thumbnail={
+                  movie.poster_path ? movie.poster_path : movie.backdrop_path
+                }
+              />
+            </Link>
           </li>
         ))}
       </ul>
       <button
-        className="absolute top-[40%] left-0 z-10 flex h-[40px] w-[40px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
+        className="group absolute top-[45%] left-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-900/70  transition-all duration-200 hover:bg-gray-300"
         onClick={onPrevClickHandler}
       >
-        <ArrowLeftIcon className="w-[16px]" />
+        <ArrowLeftIcon className="w-[16px] fill-white group-hover:fill-black" />
       </button>
       <button
-        className="absolute top-[40%] right-0 z-10 flex h-[40px] w-[40px] items-center justify-center rounded-full bg-gray-300  transition-all duration-300 hover:bg-white"
+        className="group absolute  top-[45%] right-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-900/70  transition-all duration-200 hover:bg-gray-300"
         onClick={onNextClickHandler}
       >
-        <ArrowRightIcon className="w-[16px]" />
+        <ArrowRightIcon className="w-[16px] fill-white group-hover:fill-black" />
       </button>
     </div>
   );

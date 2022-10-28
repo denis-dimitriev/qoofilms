@@ -8,8 +8,11 @@ import { Error, Spinner, Tag } from "../../atoms";
 import { StarIcon } from "../../../assets/icons";
 import { altNoImage } from "../../../assets/img";
 import { BackdropList, CastList, CrewList, PosterList } from "../../molecules";
+import { useParams } from "react-router-dom";
 
-export const ItemDetails = () => {
+export const MovieDetails = () => {
+  const { id } = useParams();
+
   const [fetchMovie, { data: movie, isLoading, error, isError }] =
     useLazyGetMovieDetailsQuery();
 
@@ -17,10 +20,12 @@ export const ItemDetails = () => {
   const [fetchImages, { data: movieImages }] = useLazyGetMovieImagesQuery();
 
   useEffect(() => {
-    fetchMovie(101);
-    fetchCredits(101);
-    fetchImages(101);
-  }, []);
+    if (id) {
+      fetchMovie(+id);
+      fetchCredits(+id);
+      fetchImages(+id);
+    }
+  }, [fetchCredits, fetchImages, fetchMovie, id]);
 
   if (isLoading) {
     return <Spinner className="absolute top-[20%] left-[50%]" />;
