@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IMobileMenuSlice {
-  isOpen: boolean;
+  MobileMenuOpen: boolean;
 }
 
 const initialState: IMobileMenuSlice = {
-  isOpen: false,
+  MobileMenuOpen: false,
 };
 
 export const mobileMenuSlice = createSlice({
   name: "mobileMenu",
   initialState,
   reducers: {
-    openMobileMenu: () => ({ isOpen: true }),
-    closeMobileMenu: () => ({ isOpen: false }),
+    openMobileMenu: () => ({ MobileMenuOpen: true }),
+    closeMobileMenu: () => ({ MobileMenuOpen: false }),
   },
 });
 

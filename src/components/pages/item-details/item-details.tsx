@@ -2,17 +2,12 @@ import {
   useLazyGetMovieCreditsQuery,
   useLazyGetMovieDetailsQuery,
   useLazyGetMovieImagesQuery,
-} from "../../services/api/tmdbMovies";
+} from "../../../services/api/tmdbMovies";
 import { useEffect } from "react";
-import { Error, Spinner, Tag } from "../../components/atoms";
-import { StarIcon } from "../../assets/icons";
-import { altNoImage } from "../../assets/img";
-import {
-  BackdropList,
-  CastList,
-  CrewList,
-  PosterList,
-} from "../../components/molecules";
+import { Error, Spinner, Tag } from "../../atoms";
+import { StarIcon } from "../../../assets/icons";
+import { altNoImage } from "../../../assets/img";
+import { BackdropList, CastList, CrewList, PosterList } from "../../molecules";
 
 export const ItemDetails = () => {
   const [fetchMovie, { data: movie, isLoading, error, isError }] =

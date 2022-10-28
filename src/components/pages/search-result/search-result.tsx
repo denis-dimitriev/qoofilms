@@ -1,12 +1,13 @@
-import { Error, Spinner, Title } from "../../components/atoms";
-import { useLazySearchMoviesQuery } from "../../services/api/tmdbSearch";
+import { Error, Spinner, Title } from "../../atoms";
+import { useLazySearchMoviesQuery } from "../../../services/api/tmdbSearch";
 import { useEffect } from "react";
-import { useAppSelector } from "../../hooks/redux";
-import { Card } from "../../components/molecules";
+import { useAppSelector } from "../../../hooks/redux";
+import { Card } from "../../molecules";
 
-const SearchResult = () => {
+export const SearchResult = () => {
   const { searchValue } = useAppSelector((state) => state.movieSearch);
-  const [search, { data, isLoading, isError, error }] = useLazySearchMoviesQuery();
+  const [search, { data, isLoading, isError, error }] =
+    useLazySearchMoviesQuery();
 
   useEffect(() => {
     if (searchValue.length > 0) {
@@ -33,7 +34,9 @@ const SearchResult = () => {
         {data?.map((movie) => (
           <Card
             key={movie.id}
-            thumbnail={movie.backdrop_path ? movie.backdrop_path : movie.poster_path}
+            thumbnail={
+              movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+            }
             title={movie.title}
           />
         ))}
@@ -41,5 +44,3 @@ const SearchResult = () => {
     </div>
   );
 };
-
-export default SearchResult;

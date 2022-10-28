@@ -1,10 +1,10 @@
-import { useGetUpcomingMoviesQuery } from "../../services/api/tmdbMovies";
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
-import { Error, Spinner, Title } from "../../components/atoms";
-import { useCombineData } from "../../hooks/useCombineData";
+import { useGetUpcomingMoviesQuery } from "../../../services/api/tmdbMovies";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
+import { Error, Spinner, Title } from "../../atoms";
+import { useCombineData } from "../../../hooks/useCombineData";
 
-const MoviesUpcoming = () => {
+export const MoviesUpcoming = () => {
   const { page, scrollNextPage } = useScrollNextPage();
   const { error, isError, isLoading, data } = useGetUpcomingMoviesQuery(page);
   const upComingList = useCombineData(data);
@@ -29,5 +29,3 @@ const MoviesUpcoming = () => {
     </div>
   );
 };
-
-export default MoviesUpcoming;

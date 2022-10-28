@@ -1,9 +1,7 @@
 import { Fragment } from "react";
-import { MainMovieList } from "../../components/organisms";
-import { MainTvShowsList } from "../../components/organisms";
-import { MainBanner } from "../../components/organisms";
+import { MainBanner, MainMovieList, MainTvShowsList } from "../../organisms";
 
-const MainList = () => {
+export const MainList = () => {
   return (
     <Fragment>
       <MainBanner />
@@ -16,12 +14,12 @@ const MainList = () => {
         <MainMovieList />
 
         <h1 className="mb-4 mt-5 text-center text-5xl font-extrabold text-gray-900">
-          <span className="bg-gradient-to-r from-sky-400 to-emerald-600 bg-clip-text text-transparent">Best On TV</span>
+          <span className="bg-gradient-to-r from-sky-400 to-emerald-600 bg-clip-text text-transparent">
+            Best On TV
+          </span>
         </h1>
         <MainTvShowsList />
       </Fragment>
     </Fragment>
   );
 };
-
-export default MainList;

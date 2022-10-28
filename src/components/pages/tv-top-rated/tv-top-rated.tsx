@@ -1,12 +1,12 @@
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useGetTopRatedShowsQuery } from "../../services/api/tmdbTVShows";
-import { useCombineData } from "../../hooks/useCombineData";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { useGetTopRatedTVShowsQuery } from "../../../services/api/tmdbTVShows";
+import { useCombineData } from "../../../hooks/useCombineData";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 
-const TvTopRated = () => {
+export const TvTopRated = () => {
   const { page, scrollNextPage } = useScrollNextPage();
-  const { error, isError, isLoading, data } = useGetTopRatedShowsQuery(page);
+  const { error, isError, isLoading, data } = useGetTopRatedTVShowsQuery(page);
   const topRatedList = useCombineData(data);
 
   if (isLoading && !data) {
@@ -29,5 +29,3 @@ const TvTopRated = () => {
     </div>
   );
 };
-
-export default TvTopRated;

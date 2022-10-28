@@ -1,5 +1,4 @@
 export * from "./ui/error/error";
-export * from "./ui/input-text/input-text";
 export * from "./ui/link-badge/link-badge";
 export * from "./ui/link-button/link-button";
 export * from "./ui/logo/logo";

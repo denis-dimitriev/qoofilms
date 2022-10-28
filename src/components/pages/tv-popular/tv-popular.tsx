@@ -1,12 +1,12 @@
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useGetPopularShowsQuery } from "../../services/api/tmdbTVShows";
-import { useCombineData } from "../../hooks/useCombineData";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { useGetPopularTVShowsQuery } from "../../../services/api/tmdbTVShows";
+import { useCombineData } from "../../../hooks/useCombineData";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 
-const TvPopular = () => {
+export const TvPopular = () => {
   const { page, scrollNextPage } = useScrollNextPage();
-  const { error, isError, isLoading, data } = useGetPopularShowsQuery(page);
+  const { error, isError, isLoading, data } = useGetPopularTVShowsQuery(page);
   const popularTVList = useCombineData(data);
 
   if (isLoading && !data) {
@@ -29,5 +29,3 @@ const TvPopular = () => {
     </div>
   );
 };
-
-export default TvPopular;

@@ -1,6 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { ITVShow, ServerResponse } from "../../types/app.types";
-import { BASE_IMAGE_URL, BASE_POSTER_URL, BASE_URL, tmdbQueryParams } from "./tmdbMovies";
+import {
+  BASE_IMAGE_URL,
+  BASE_POSTER_URL,
+  BASE_URL,
+  tmdbQueryParams,
+} from "./tmdbMovies";
 
 const transformResultWithImages = (arr: ITVShow[]) => {
   return arr.map((el) => {
@@ -20,7 +25,7 @@ export const tmdbTVShows = createApi({
     baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
-    getPopularShows: builder.query<ITVShow[], number | void>({
+    getPopularTVShows: builder.query<ITVShow[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/tv/popular",
         params: {
@@ -28,9 +33,10 @@ export const tmdbTVShows = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<ITVShow>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<ITVShow>) =>
+        transformResultWithImages(res.results),
     }),
-    getTopRatedShows: builder.query<ITVShow[], number | void>({
+    getTopRatedTVShows: builder.query<ITVShow[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/tv/top_rated",
         params: {
@@ -38,9 +44,10 @@ export const tmdbTVShows = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<ITVShow>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<ITVShow>) =>
+        transformResultWithImages(res.results),
     }),
-    getOnTheAirShows: builder.query<ITVShow[], number | void>({
+    getOnTheAirTVShows: builder.query<ITVShow[], number | void>({
       query: (pageNumber: number = 1) => ({
         url: "/tv/on_the_air",
         params: {
@@ -48,9 +55,14 @@ export const tmdbTVShows = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<ITVShow>) => transformResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<ITVShow>) =>
+        transformResultWithImages(res.results),
     }),
   }),
 });
 
-export const { useGetPopularShowsQuery, useGetTopRatedShowsQuery, useGetOnTheAirShowsQuery } = tmdbTVShows;
+export const {
+  useGetPopularTVShowsQuery,
+  useGetTopRatedTVShowsQuery,
+  useGetOnTheAirTVShowsQuery,
+} = tmdbTVShows;

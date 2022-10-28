@@ -1,18 +1,18 @@
 import { LinkBadge, Tag } from "../../atoms";
 import { Carousel } from "../carousel/carousel";
 import {
-  useGetOnTheAirShowsQuery,
-  useGetPopularShowsQuery,
-  useGetTopRatedShowsQuery,
+  useGetOnTheAirTVShowsQuery,
+  useGetPopularTVShowsQuery,
+  useGetTopRatedTVShowsQuery,
 } from "../../../services/api/tmdbTVShows";
 
 export const MainTvShowsList = () => {
   const { isLoading: popularLoading, data: popular } =
-    useGetPopularShowsQuery();
+    useGetPopularTVShowsQuery();
   const { isLoading: topRatedLoading, data: topRated } =
-    useGetTopRatedShowsQuery();
+    useGetTopRatedTVShowsQuery();
   const { isLoading: onTheAieLoading, data: onTheAir } =
-    useGetOnTheAirShowsQuery();
+    useGetOnTheAirTVShowsQuery();
 
   const blurEffect = onTheAieLoading || topRatedLoading || popularLoading;
 

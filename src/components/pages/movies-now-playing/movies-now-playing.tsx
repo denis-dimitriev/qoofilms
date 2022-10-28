@@ -1,10 +1,10 @@
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useGetNowPlayingMoviesQuery } from "../../services/api/tmdbMovies";
-import { useCombineData } from "../../hooks/useCombineData";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { useGetNowPlayingMoviesQuery } from "../../../services/api/tmdbMovies";
+import { useCombineData } from "../../../hooks/useCombineData";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 
-const MoviesNowPlaying = () => {
+export const MoviesNowPlaying = () => {
   const { page, scrollNextPage } = useScrollNextPage();
   const { error, isError, isLoading, data } = useGetNowPlayingMoviesQuery(page);
   const nowPlayingList = useCombineData(data);
@@ -29,5 +29,3 @@ const MoviesNowPlaying = () => {
     </div>
   );
 };
-
-export default MoviesNowPlaying;

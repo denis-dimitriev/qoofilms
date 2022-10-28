@@ -1,12 +1,12 @@
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useCombineData } from "../../hooks/useCombineData";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
-import { useGetOnTheAirShowsQuery } from "../../services/api/tmdbTVShows";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { useCombineData } from "../../../hooks/useCombineData";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
+import { useGetOnTheAirTVShowsQuery } from "../../../services/api/tmdbTVShows";
 
-const TvOnTheAir = () => {
+export const TvOnTheAir = () => {
   const { page, scrollNextPage } = useScrollNextPage();
-  const { error, isError, isLoading, data } = useGetOnTheAirShowsQuery(page);
+  const { error, isError, isLoading, data } = useGetOnTheAirTVShowsQuery(page);
   const onTheAirList = useCombineData(data);
 
   if (isLoading && !data) {
@@ -29,5 +29,3 @@ const TvOnTheAir = () => {
     </div>
   );
 };
-
-export default TvOnTheAir;

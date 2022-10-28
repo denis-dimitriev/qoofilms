@@ -16,7 +16,7 @@ export const SearchForm = () => {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate(`/home/search/${searchValue}`);
+    navigate(`/search/${searchValue}`);
   };
 
   const onInputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +26,7 @@ export const SearchForm = () => {
 
   const onKeyPressHandler = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
-      navigate(`/home/search/${searchValue}`);
+      navigate(`/search/${searchValue}`);
     }
   };
 

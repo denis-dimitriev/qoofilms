@@ -1,5 +1,5 @@
 import { HamburgerButton, Logo } from "../../atoms";
-import { MainNavigation, SearchForm } from "../../molecules";
+import { MainMenu, SearchForm } from "../../molecules";
 import { useScrollTranslateElement } from "../../../hooks/useScrollTranslateElement";
 
 export const Header = () => {
@@ -15,7 +15,7 @@ export const Header = () => {
       <div className="container relative flex h-[40px] items-center justify-between">
         <Logo className="tablet:hidden" />
         <HamburgerButton />
-        <MainNavigation />
+        <MainMenu />
         <SearchForm />
       </div>
     </header>

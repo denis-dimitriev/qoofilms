@@ -1,10 +1,10 @@
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { useGetPopularMoviesQuery } from "../../services/api/tmdbMovies";
-import { useCombineData } from "../../hooks/useCombineData";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { useGetPopularMoviesQuery } from "../../../services/api/tmdbMovies";
+import { useCombineData } from "../../../hooks/useCombineData";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 
-const MoviesPopular = () => {
+export const MoviesPopular = () => {
   const { page, scrollNextPage } = useScrollNextPage();
   const { error, isError, isLoading, data } = useGetPopularMoviesQuery(page);
   const popularList = useCombineData(data);
@@ -29,5 +29,3 @@ const MoviesPopular = () => {
     </div>
   );
 };
-
-export default MoviesPopular;

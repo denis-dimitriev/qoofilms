@@ -53,7 +53,7 @@ export const Carousel = ({ list }: CarouselProps) => {
             <Card
               title={"title" in movie ? movie.title : movie.name}
               thumbnail={
-                movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+                movie.poster_path ? movie.poster_path : movie.backdrop_path
               }
             />
           </li>

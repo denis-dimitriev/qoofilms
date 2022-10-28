@@ -1,10 +1,10 @@
-import { useGetTopRatedMoviesQuery } from "../../services/api/tmdbMovies";
-import { useScrollNextPage } from "../../hooks/useScrollNextPage";
-import { Error, Spinner, Title } from "../../components/atoms";
-import InfiniteScrolling from "../../components/organisms/infinite-scrolling/infinite-scrolling";
-import { useCombineData } from "../../hooks/useCombineData";
+import { useGetTopRatedMoviesQuery } from "../../../services/api/tmdbMovies";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { Error, Spinner, Title } from "../../atoms";
+import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
+import { useCombineData } from "../../../hooks/useCombineData";
 
-const MoviesTopRated = () => {
+export const MoviesTopRated = () => {
   const { page, scrollNextPage } = useScrollNextPage();
   const { isError, error, isLoading, data } = useGetTopRatedMoviesQuery(page);
 
@@ -30,5 +30,3 @@ const MoviesTopRated = () => {
     </div>
   );
 };
-
-export default MoviesTopRated;

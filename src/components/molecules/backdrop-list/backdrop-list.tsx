@@ -29,7 +29,7 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
     <div className="flex flex-col">
       <Tag>Backdrops</Tag>
       <ul
-        className="mt-1 flex cursor-pointer gap-x-2 overflow-x-scroll  pb-3 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
+        className="mt-1 flex cursor-pointer gap-x-2 overflow-x-scroll pb-3 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
         {...events}
         ref={ref}
       >
