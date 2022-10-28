@@ -75,8 +75,8 @@ export const tmdbMovies = createApi({
       transformResponse: (res: ServerResponse<IMovie>) =>
         transformMovieResultWithImages(res.results),
     }),
-    getMovieDetails: builder.query<IMovieDetails, number>({
-      query: (movieId: number) => ({
+    getMovieDetails: builder.query<IMovieDetails, string>({
+      query: (movieId: string) => ({
         url: `movie/${movieId}`,
         params: tmdbQueryParams,
       }),
@@ -88,8 +88,8 @@ export const tmdbMovies = createApi({
         };
       },
     }),
-    getMovieCredits: builder.query<ServerCreditsResponse, number>({
-      query: (movieId: number) => ({
+    getMovieCredits: builder.query<ServerCreditsResponse, string>({
+      query: (movieId: string) => ({
         url: `movie/${movieId}/credits`,
         params: tmdbQueryParams,
       }),
@@ -106,8 +106,8 @@ export const tmdbMovies = createApi({
         };
       },
     }),
-    getMovieImages: builder.query<ServerImagesResponse, number>({
-      query: (movieId: number) => ({
+    getMovieImages: builder.query<ServerImagesResponse, string>({
+      query: (movieId: string) => ({
         url: `movie/${movieId}/images`,
         params: tmdbQueryParams,
       }),

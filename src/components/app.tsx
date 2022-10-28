@@ -1,7 +1,11 @@
+import { Route, Routes } from "react-router-dom";
+import { Layout } from "./layout/layout";
 import { useAppSelector } from "../hooks/redux";
 import { Fragment, useEffect } from "react";
-import { TvShowDetails } from "./pages";
+import { Homepage, MainList, Search } from "./pages";
 import { MobileMenu } from "./molecules";
+
+import { Movies, TVShows } from "./routes";
 
 export const App = () => {
   const { MobileMenuOpen } = useAppSelector((state) => state.mobileMenu);
@@ -18,18 +22,16 @@ export const App = () => {
   return (
     <Fragment>
       {MobileMenuOpen && <MobileMenu />}
-      {/* <Routes>
+      <Routes>
         <Route element={<Layout />}>
           <Route path="/*" element={<Homepage />}>
             <Route index element={<MainList />} />
             <Route path="movies/*" element={<Movies />} />
-            <Route path="tv-shows" element={<TVShows />} />
             <Route path="tv-shows/*" element={<TVShows />} />
             <Route path="search/:title" element={<Search />} />
           </Route>
         </Route>
-      </Routes>*/}
-      <TvShowDetails />
+      </Routes>
     </Fragment>
   );
 };

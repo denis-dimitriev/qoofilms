@@ -18,8 +18,8 @@ export const CastList = ({ cast }: CastListProps) => {
             <div className="flex flex-col">
               <img
                 className="h-full w-full"
-                src={actor.profile_path}
-                alt={altNoImage}
+                src={actor.profile_path ? actor.profile_path : altNoImage}
+                alt={""}
               />
               <span className="text-sm font-bold">{actor.name}</span>
             </div>

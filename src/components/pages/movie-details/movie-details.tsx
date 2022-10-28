@@ -21,9 +21,9 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetchMovie(+id);
-      fetchCredits(+id);
-      fetchImages(+id);
+      fetchMovie(id);
+      fetchCredits(id);
+      fetchImages(id);
     }
   }, [fetchCredits, fetchImages, fetchMovie, id]);
 

@@ -11,7 +11,7 @@ export const Card = ({ thumbnail, title }: CardProps) => {
     <div className="group relative h-[300px] w-[220px] cursor-pointer overflow-hidden rounded p-1 shadow-xl transition-all">
       <figure className="h-full w-full">
         <LazyLoadImage
-          className="h-full w-full object-fill object-center"
+          className="h-full w-full object-cover object-center"
           src={thumbnail}
           effect="black-and-white"
           placeholderSrc={altNoImage}

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 interface CarouselProps {
   list: IMovie[] | ITVShow[];
-  linkPath?: string;
+  linkPath: string;
 }
 
 export const Carousel = ({ list, linkPath }: CarouselProps) => {

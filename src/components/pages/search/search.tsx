@@ -3,6 +3,7 @@ import { useLazySearchMoviesQuery } from "../../../services/api/tmdbSearch";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../hooks/redux";
 import { Card } from "../../molecules";
+import { Link } from "react-router-dom";
 
 export const Search = () => {
   const { searchValue } = useAppSelector((state) => state.movieSearch);
@@ -32,13 +33,15 @@ export const Search = () => {
       <Title>Search Result</Title>
       <div className="flex flex-wrap justify-center gap-2">
         {data?.map((movie) => (
-          <Card
-            key={movie.id}
-            thumbnail={
-              movie.backdrop_path ? movie.backdrop_path : movie.poster_path
-            }
-            title={movie.title}
-          />
+          <Link to={`/movies/${movie.id}`}>
+            <Card
+              key={movie.id}
+              thumbnail={
+                movie.backdrop_path ? movie.backdrop_path : movie.poster_path
+              }
+              title={movie.title}
+            />
+          </Link>
         ))}
       </div>
     </div>

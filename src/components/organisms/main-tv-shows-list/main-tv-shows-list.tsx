@@ -26,21 +26,21 @@ export const MainTvShowsList = () => {
         <Tag>
           On the air <LinkBadge link="tv-shows/on-the-air">See more</LinkBadge>
         </Tag>
-        {onTheAir && <Carousel list={onTheAir} />}
+        {onTheAir && <Carousel list={onTheAir} linkPath="tv-shows" />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Top Rated
           <LinkBadge link="tv-shows/top-rated">See more</LinkBadge>
         </Tag>
-        {topRated && <Carousel list={topRated} />}
+        {topRated && <Carousel list={topRated} linkPath="tv-shows" />}
       </div>
       <div className="flex flex-col gap-y-2">
         <Tag>
           Popular
           <LinkBadge link="tv-shows/popular">See more</LinkBadge>
         </Tag>
-        {popular && <Carousel list={popular} />}
+        {popular && <Carousel list={popular} linkPath="tv-shows" />}
       </div>
     </div>
   );
