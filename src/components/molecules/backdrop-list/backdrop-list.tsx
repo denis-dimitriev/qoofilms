@@ -1,5 +1,5 @@
 import { Tag } from "../../atoms";
-import { IBackdrop } from "../../../types/movie-images";
+import { IBackdrop } from "../../../types/images";
 import { Gallery } from "../../organisms/gallery/gallery";
 import { MutableRefObject, useCallback, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";

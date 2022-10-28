@@ -1,6 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { BASE_URL, tmdbQueryParams, transformMovieResultWithImages } from "./tmdbMovies";
-import { IMovie, ServerResponse } from "../../types/app.types";
+import {
+  BASE_URL,
+  tmdbQueryParams,
+  transformMovieResultWithImages,
+} from "./tmdbMovies";
+import { IMovie, ServerResponse } from "../../types/general.types";
 
 export const tmdbSearch = createApi({
   reducerPath: "tmdbSearch",
@@ -16,7 +20,8 @@ export const tmdbSearch = createApi({
           query: searchValue,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) => transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
     }),
   }),
 });

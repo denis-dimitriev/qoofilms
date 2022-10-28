@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { IMovie, ServerResponse } from "../../types/app.types";
+import { IMovie, ServerResponse } from "../../types/general.types";
 import { IMovieDetails } from "../../types/movie-details";
-import { ServerCreditsResponse } from "../../types/movie-credits";
-import { ServerImagesResponse } from "../../types/movie-images";
+import { ServerCreditsResponse } from "../../types/credits";
+import { ServerImagesResponse } from "../../types/images";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";

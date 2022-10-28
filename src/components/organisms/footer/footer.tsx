@@ -1,12 +1,10 @@
 import { Logo } from "../../atoms";
-import { MainMenu } from "../../molecules";
 
 export const Footer = () => {
   return (
-    <footer className="h-auto w-full bg-gray-900">
-      <div className="container flex text-white">
+    <footer className="h-[100px] w-full bg-gradient-to-r from-gray-900 to-gray-700">
+      <div className="container flex h-full w-full items-center text-white">
         <Logo />
-        <MainMenu />
       </div>
     </footer>
   );

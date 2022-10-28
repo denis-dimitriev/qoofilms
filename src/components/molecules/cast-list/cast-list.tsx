@@ -1,4 +1,4 @@
-import { ICast } from "../../../types/movie-credits";
+import { ICast } from "../../../types/credits";
 import { Tag } from "../../atoms";
 import { altNoImage } from "../../../assets/img";
 

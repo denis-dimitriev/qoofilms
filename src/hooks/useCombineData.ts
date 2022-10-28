@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MovieTypes } from "../types/app.types";
+import { MovieTypes } from "../types/general.types";
 
 export const useCombineData = (data: MovieTypes | undefined): MovieTypes => {
   const [movieList, setMovieList] = useState<MovieTypes>([]);

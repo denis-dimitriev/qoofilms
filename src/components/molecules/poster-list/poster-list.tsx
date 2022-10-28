@@ -1,7 +1,7 @@
 import { MutableRefObject, useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { Tag } from "../../atoms";
-import { IPoster } from "../../../types/movie-images";
+import { IPoster } from "../../../types/images";
 
 interface PosterListProps {
   posters: IPoster[];

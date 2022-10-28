@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-import { ITVShow, ServerResponse } from "../../types/app.types";
+import { ITVShow, ServerResponse } from "../../types/general.types";
 import {
   BASE_IMAGE_URL,
   BASE_POSTER_URL,
   BASE_URL,
   tmdbQueryParams,
 } from "./tmdbMovies";
-import { ITVShowDetails } from "../../types/tv-show";
-import { ServerImagesResponse } from "../../types/movie-images";
-import { ServerCreditsResponse } from "../../types/movie-credits";
+import { ITVShowDetails } from "../../types/tv-show-details";
+import { ServerImagesResponse } from "../../types/images";
+import { ServerCreditsResponse } from "../../types/credits";
 
 const transformTVShowsResultWithImages = (arr: ITVShow[]) => {
   return arr.map((el) => {

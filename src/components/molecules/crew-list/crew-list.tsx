@@ -1,4 +1,4 @@
-import { ICrew } from "../../../types/movie-credits";
+import { ICrew } from "../../../types/credits";
 
 interface CrewListProps {
   crewList: ICrew[];

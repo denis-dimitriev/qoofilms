@@ -1,7 +1,7 @@
 import { Card } from "../../molecules";
 import { ArrowLeftIcon, ArrowRightIcon } from "../../../assets/icons";
 import { useEffect, useState } from "react";
-import { IMovie, ITVShow } from "../../../types/app.types";
+import { IMovie, ITVShow } from "../../../types/general.types";
 import { Link } from "react-router-dom";
 
 interface CarouselProps {

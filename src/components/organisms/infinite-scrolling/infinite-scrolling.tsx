@@ -1,4 +1,4 @@
-import { IMovie, ITVShow } from "../../../types/app.types";
+import { IMovie, ITVShow } from "../../../types/general.types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Spinner } from "../../atoms";
 import { Card } from "../../molecules";

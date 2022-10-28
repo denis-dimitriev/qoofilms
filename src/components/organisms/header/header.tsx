@@ -1,9 +1,9 @@
 import { HamburgerButton, Logo } from "../../atoms";
 import { MainMenu, SearchForm } from "../../molecules";
-import { useScrollTranslateElement } from "../../../hooks/useScrollTranslateElement";
+import { useHideHeader } from "../../../hooks/useHideHeader";
 
 export const Header = () => {
-  const { translate } = useScrollTranslateElement();
+  const { translate } = useHideHeader();
 
   return (
     <header
