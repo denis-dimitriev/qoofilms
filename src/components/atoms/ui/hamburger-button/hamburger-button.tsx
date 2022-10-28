@@ -8,7 +8,10 @@ export const HamburgerButton = () => {
   const onOpenMobileMenuHandler = () => dispatch(openMobileMenu());
 
   return (
-    <button className="hidden py-2 px-4 tablet:block" onClick={onOpenMobileMenuHandler}>
+    <button
+      className="mr-4 hidden p-1 tablet:block"
+      onClick={onOpenMobileMenuHandler}
+    >
       <HamburgerIcon className="h-[25px] w-[25px]" />
     </button>
   );

@@ -10,7 +10,7 @@ export const TabletMenu = () => {
 
   return (
     <div className="fixed top-0 left-0 bottom-0 right-0 z-[199] flex h-screen w-full bg-gray-900/50">
-      <div className="mt-2 flex min-h-screen w-[280px] animate-fadeIn flex-col bg-gray-900 p-[10px] text-white">
+      <div className="flex h-screen w-[280px] animate-fadeIn flex-col bg-gray-900 p-[10px] text-white">
         <div className="flex items-center justify-between">
           <Logo onClick={onCloseMobileMenuHandler} />
           <CloseButton onClick={onCloseMobileMenuHandler} />

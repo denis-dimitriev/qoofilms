@@ -7,10 +7,12 @@ import { useEffect } from "react";
 import { Error, Spinner, Tag } from "../../components/atoms";
 import { StarIcon } from "../../assets/icons";
 import { altNoImage } from "../../assets/img";
-import { ICrew } from "../../types/movie-credits";
-import { BackdropList } from "../../components/molecules";
-import { PosterList } from "../../components/molecules/poster-list/poster-list";
-import { CastList } from "../../components/molecules/cast-list/cast-list";
+import {
+  BackdropList,
+  CastList,
+  CrewList,
+  PosterList,
+} from "../../components/molecules";
 
 export const ItemDetails = () => {
   const [fetchMovie, { data: movie, isLoading, error, isError }] =
@@ -47,8 +49,6 @@ export const ItemDetails = () => {
   const year = movie.release_date.substring(0, 4);
   const voteAvg = movie.vote_average.toString().substring(0, 3);
 
-  const topCrew: ICrew[] | undefined = credits?.crew.slice(0, 10);
-
   return (
     <div className="relative mt-5 h-full w-full">
       <div className="flex gap-[30px] tablet-sm:flex-col tablet-sm:items-center tablet:flex-wrap">
@@ -69,7 +69,6 @@ export const ItemDetails = () => {
             <StarIcon className="absolute top-0 right-[-15px] h-[15px] w-[15px]" />
           </div>
 
-          {/* About */}
           <Tag>About</Tag>
           <h3 className="mt-3 font-bold">Overview</h3>
           <p className="mb-4 w-3/4">{movie.overview}</p>
@@ -100,27 +99,13 @@ export const ItemDetails = () => {
               <span className="text-sm font-medium">{productionCompanies}</span>
             </li>
           </ul>
-          <h3 className="mt-3 font-bold">Crew</h3>
-          <ul className="flex w-full flex-wrap tablet-sm:justify-center">
-            {topCrew?.map((job) => (
-              <li
-                key={`${job.id} + ${job.department}`}
-                className="p-1 text-sm font-bold"
-              >
-                {job.department}:&nbsp;
-                <span className="text-sm font-medium">{job.name}</span>
-              </li>
-            ))}
-          </ul>
+          {credits && <CrewList crewList={credits.crew} />}
         </div>
 
-        {/* Cast */}
         {credits && <CastList cast={credits.cast} />}
       </div>
 
-      {/* Backdrops */}
       {movieImages && <BackdropList backdrops={movieImages.backdrops} />}
-      {/* Posters */}
       {movieImages && <PosterList posters={movieImages.posters} />}
     </div>
   );

@@ -12,13 +12,13 @@ export const Gallery = ({ image }: GalleryProps) => {
   const onCloseClickHandler = () => dispatch(setCloseGallery());
 
   return (
-    <div className="fixed top-0 left-0 bottom-0 right-0 z-[299] flex items-center justify-center bg-gray-900 p-2">
+    <div className="fixed top-0 left-0 bottom-0 right-0 z-[299] flex items-center justify-center bg-black/90 p-2">
       <CloseButton
         className="absolute top-[2%] right-[2%]"
         onClick={onCloseClickHandler}
       />
-      <div className="flex max-h-[1080px] max-w-[1920px] items-center justify-center rounded">
-        <img className="h-full w-full" src={image} alt="" />
+      <div className="flex max-h-[80%] max-w-[80%] items-center justify-center">
+        <img className=" h-full w-full  rounded shadow-lg" src={image} alt="" />
       </div>
     </div>
   );
