@@ -20,7 +20,7 @@ export const PosterList = ({ posters }: PosterListProps) => {
       <Tag>Posters</Tag>
       <ul
         id="poster"
-        className="flex gap-x-2 overflow-x-scroll pb-2 transition-all duration-300 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
+        className="mt-1 flex gap-x-2 overflow-x-scroll pb-3 transition-all duration-300 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
         {...events}
         ref={ref}
       >
