@@ -15,7 +15,7 @@ export const Search = () => {
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (searchValue.length > 0) {

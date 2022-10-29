@@ -16,7 +16,7 @@ export const MoviesNowPlaying = () => {
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
-  }, []);
+  }, [dispatch]);
 
   if (isLoading && !data) {
     return <Spinner className="absolute top-[20%] left-[50%]" />;

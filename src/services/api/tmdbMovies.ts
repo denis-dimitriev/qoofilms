@@ -123,6 +123,15 @@ export const tmdbMovies = createApi({
         };
       },
     }),
+    getMovieDiscover: builder.query<any, void>({
+      query: () => ({
+        url: "discover/movie",
+        params: {
+          ...tmdbQueryParams,
+          sort_by: "vote_average.desc",
+        },
+      }),
+    }),
   }),
 });
 
@@ -134,4 +143,5 @@ export const {
   useLazyGetMovieDetailsQuery,
   useLazyGetMovieCreditsQuery,
   useLazyGetMovieImagesQuery,
+  useGetMovieDiscoverQuery,
 } = tmdbMovies;

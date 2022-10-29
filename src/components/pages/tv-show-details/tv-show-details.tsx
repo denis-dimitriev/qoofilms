@@ -19,7 +19,7 @@ export const TvShowDetails = () => {
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
-  }, []);
+  }, [dispatch]);
 
   const [fetchTvShow, { data: tvShow, isLoading, isError, error }] =
     useLazyGetTVShowDetailsQuery();

@@ -4,7 +4,6 @@ import { useAppSelector } from "../hooks/redux";
 import { Fragment, useEffect } from "react";
 import { Homepage, MainList, Search } from "./pages";
 import { MobileMenu } from "./molecules";
-
 import { Movies, TVShows } from "./routes";
 
 export const App = () => {

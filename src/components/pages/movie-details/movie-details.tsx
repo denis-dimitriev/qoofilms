@@ -9,7 +9,7 @@ import { StarIcon } from "../../../assets/icons";
 import { altNoImage } from "../../../assets/img";
 import { BackdropList, CastList, CrewList, PosterList } from "../../molecules";
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch } from "../../../hooks/redux";
 import { setHiddenHeader } from "../../../features/header/header.slice";
 
 export const MovieDetails = () => {
@@ -19,7 +19,7 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
-  }, []);
+  }, [dispatch]);
 
   const [fetchMovie, { data: movie, isLoading, error, isError }] =
     useLazyGetMovieDetailsQuery();

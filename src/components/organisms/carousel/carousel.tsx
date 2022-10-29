@@ -64,16 +64,16 @@ export const Carousel = ({ list, linkPath }: CarouselProps) => {
         ))}
       </ul>
       <button
-        className="group absolute top-[45%] left-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-900/70  transition-all duration-200 hover:bg-gray-300"
+        className="group absolute top-[0] left-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
         onClick={onPrevClickHandler}
       >
-        <ArrowLeftIcon className="w-[16px] fill-white group-hover:fill-black" />
+        <ArrowLeftIcon className="w-[25px] fill-white transition-transform group-hover:scale-[1.5]" />
       </button>
       <button
-        className="group absolute  top-[45%] right-0 z-10 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-900/70  transition-all duration-200 hover:bg-gray-300"
+        className="group absolute  top-[0] right-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
         onClick={onNextClickHandler}
       >
-        <ArrowRightIcon className="w-[16px] fill-white group-hover:fill-black" />
+        <ArrowRightIcon className="w-[25px] fill-white transition-transform group-hover:scale-[1.5]" />
       </button>
     </div>
   );

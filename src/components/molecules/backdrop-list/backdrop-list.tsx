@@ -32,7 +32,7 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
     <div className="flex flex-col">
       <Tag>Backdrops</Tag>
       <ul
-        className="mt-1 flex cursor-pointer gap-x-2 overflow-x-scroll pb-3 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
+        className="mt-1 flex cursor-grab gap-x-2 overflow-x-scroll pb-3 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-900"
         {...events}
         ref={ref}
       >
@@ -42,7 +42,7 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
             className="h-[180px] min-w-[300px] overflow-hidden"
           >
             <img
-              className="h-full w-full object-contain transition-all duration-300 hover:scale-[1.03]"
+              className="h-full w-full cursor-zoom-in object-contain transition-all duration-300 hover:scale-[1.03]"
               src={backdrop.file_path}
               alt=""
               onClick={() => onImageClickHandler(backdrop.file_path)}

@@ -33,7 +33,7 @@ export const Layout = () => {
       layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);
     };
-  }, [dispatch]);
+  }, [dispatch, handleScroll]);
 
   return (
     <div
