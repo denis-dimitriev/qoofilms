@@ -7,18 +7,21 @@ import { setHiddenHeader } from "../../features/header/header.slice";
 export const Layout = () => {
   const dispatch = useAppDispatch();
 
-  const handleScroll = useCallback((event: WheelEvent) => {
-    const windowsHeight = window.innerHeight;
-    const layoutHeight = document.getElementById("layout")?.offsetHeight;
-    if (!layoutHeight) {
-      return;
-    }
-    if (layoutHeight > windowsHeight) {
-      event.deltaY > 0
-        ? dispatch(setHiddenHeader(true))
-        : dispatch(setHiddenHeader(false));
-    }
-  }, []);
+  const handleScroll = useCallback(
+    (event: WheelEvent) => {
+      const windowsHeight = window.innerHeight;
+      const layoutHeight = document.getElementById("layout")?.offsetHeight;
+      if (!layoutHeight) {
+        return;
+      }
+      if (layoutHeight > windowsHeight) {
+        event.deltaY > 0
+          ? dispatch(setHiddenHeader(true))
+          : dispatch(setHiddenHeader(false));
+      }
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -33,7 +36,7 @@ export const Layout = () => {
       layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);
     };
-  }, [dispatch]);
+  }, [handleScroll]);
 
   return (
     <div
