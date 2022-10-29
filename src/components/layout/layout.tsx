@@ -10,10 +10,7 @@ export const Layout = () => {
   const handleScroll = useCallback(
     (event: WheelEvent) => {
       const windowsHeight = window.innerHeight;
-      const layoutHeight = document.getElementById("layout")?.offsetHeight;
-      if (!layoutHeight) {
-        return;
-      }
+      const layoutHeight = document.getElementById("layout")?.offsetHeight!!;
       if (layoutHeight > windowsHeight) {
         event.deltaY > 0
           ? dispatch(setHiddenHeader(true))
