@@ -25,7 +25,7 @@ export const PosterList = ({ posters }: PosterListProps) => {
         {posters.map((backdrop) => (
           <li
             key={backdrop.file_path}
-            className="h-[310px] min-w-[200px] cursor-pointer"
+            className="h-[310px] min-w-[200px] cursor-grab"
           >
             <img
               className="h-[300px] w-full object-contain"

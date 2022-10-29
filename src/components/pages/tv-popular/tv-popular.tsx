@@ -3,11 +3,20 @@ import { useGetPopularTVShowsQuery } from "../../../services/api/tmdbTVShows";
 import { useCombineData } from "../../../hooks/useCombineData";
 import { Error, Spinner, Title } from "../../atoms";
 import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
+import { useAppDispatch } from "../../../hooks/redux";
+import { useEffect } from "react";
+import { setHiddenHeader } from "../../../features/header/header.slice";
 
 export const TvPopular = () => {
   const { page, scrollNextPage } = useScrollNextPage();
   const { error, isError, isLoading, data } = useGetPopularTVShowsQuery(page);
   const popularTVList = useCombineData(data);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHiddenHeader(false));
+  }, []);
 
   if (isLoading && !data) {
     return <Spinner className="absolute top-[20%] left-[50%]" />;
@@ -24,6 +33,7 @@ export const TvPopular = () => {
         <InfiniteScrolling
           data={popularTVList}
           fetchNextPageData={scrollNextPage}
+          linkPath="tv-shows"
         />
       </div>
     </div>

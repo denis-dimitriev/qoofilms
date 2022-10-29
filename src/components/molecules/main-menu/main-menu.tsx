@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { moviesLinks, tvShowLinks } from "../../routes/app-links";
+import { moviesLinks, tvShowLinks } from "../../routes";
 
 export const MainMenu = () => {
   return (
@@ -10,10 +10,11 @@ export const MainMenu = () => {
         </span>
         <ul className="absolute left-0 top-[100%] z-10 hidden  w-[200px] rounded-lg  bg-gray-800 text-sm shadow-2xl group-hover:block ">
           {moviesLinks.map((link) => (
-            <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-              <Link key={link.path + link.name} to={link.path}>
-                {link.name}
-              </Link>
+            <li
+              key={link.path + link.name}
+              className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600"
+            >
+              <Link to={link.path}>{link.name}</Link>
             </li>
           ))}
         </ul>
@@ -24,10 +25,11 @@ export const MainMenu = () => {
         </span>
         <ul className="absolute left-0 top-[100%] z-10 hidden w-[200px] rounded-lg bg-gray-800 text-sm shadow-2xl group-hover:block">
           {tvShowLinks.map((link) => (
-            <li className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600">
-              <Link key={link.path + link.name} to={link.path}>
-                {link.name}
-              </Link>
+            <li
+              key={link.path + link.name}
+              className="w-full cursor-pointer px-4 py-2 transition-colors hover:bg-gray-600"
+            >
+              <Link to={link.path}>{link.name}</Link>
             </li>
           ))}
         </ul>

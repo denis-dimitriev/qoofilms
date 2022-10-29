@@ -9,9 +9,17 @@ import { StarIcon } from "../../../assets/icons";
 import { altNoImage } from "../../../assets/img";
 import { BackdropList, CastList, CrewList, PosterList } from "../../molecules";
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { setHiddenHeader } from "../../../features/header/header.slice";
 
 export const MovieDetails = () => {
   const { id } = useParams();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHiddenHeader(false));
+  }, []);
 
   const [fetchMovie, { data: movie, isLoading, error, isError }] =
     useLazyGetMovieDetailsQuery();

@@ -1,14 +1,21 @@
 import { Error, Spinner, Title } from "../../atoms";
 import { useLazySearchMoviesQuery } from "../../../services/api/tmdbSearch";
 import { useEffect } from "react";
-import { useAppSelector } from "../../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { Card } from "../../molecules";
 import { Link } from "react-router-dom";
+import { setHiddenHeader } from "../../../features/header/header.slice";
 
 export const Search = () => {
   const { searchValue } = useAppSelector((state) => state.movieSearch);
   const [search, { data, isLoading, isError, error }] =
     useLazySearchMoviesQuery();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHiddenHeader(false));
+  }, []);
 
   useEffect(() => {
     if (searchValue.length > 0) {

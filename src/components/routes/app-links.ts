@@ -32,7 +32,7 @@ export const tvShowLinks: LinksType[] = [
     path: "tv-shows/on-the-air",
   },
   {
-    name: "Now Playing",
-    path: "tv-shows/now-playing",
+    name: "Top Rated",
+    path: "tv-shows/top-rated",
   },
 ];

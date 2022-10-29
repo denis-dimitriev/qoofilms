@@ -13,7 +13,7 @@ export const MainBanner = () => {
       <figcaption className="absolute top-[20%] left-0 w-1/2 p-2 text-gray-100 phone:w-full">
         <h1 className="mb-3 text-4xl font-bold ">Welcome!</h1>
         <h2 className="text-2xl">
-          Millions of movies, TV shows and people to discover. Explore now.
+          Millions of movies and TV shows discover. Explore now.
         </h2>
       </figcaption>
     </section>

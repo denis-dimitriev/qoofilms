@@ -51,7 +51,7 @@ export const Carousel = ({ list, linkPath }: CarouselProps) => {
         style={{ transform: `translateX(${pos}px)` }}
       >
         {list.map((movie) => (
-          <li id="carousel-list-item" key={movie.id}>
+          <li id="carousel-list-item" key={movie.id + movie.vote_count}>
             <Link to={`${linkPath}/${movie.id}`}>
               <Card
                 title={"title" in movie ? movie.title : movie.name}

@@ -20,10 +20,13 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
     applyRubberBandEffect: true,
   });
 
-  const onImageClickHandler = useCallback((img: string) => {
-    setImage(img);
-    dispatch(setOpenGallery());
-  }, []);
+  const onImageClickHandler = useCallback(
+    (img: string) => {
+      setImage(img);
+      dispatch(setOpenGallery());
+    },
+    [dispatch]
+  );
 
   return (
     <div className="flex flex-col">

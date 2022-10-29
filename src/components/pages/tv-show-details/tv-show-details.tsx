@@ -9,9 +9,17 @@ import { altNoImage } from "../../../assets/img";
 import { StarIcon } from "../../../assets/icons";
 import { BackdropList, CastList, CrewList, PosterList } from "../../molecules";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks/redux";
+import { setHiddenHeader } from "../../../features/header/header.slice";
 
 export const TvShowDetails = () => {
   const { id } = useParams();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setHiddenHeader(false));
+  }, []);
 
   const [fetchTvShow, { data: tvShow, isLoading, isError, error }] =
     useLazyGetTVShowDetailsQuery();
