@@ -5,6 +5,8 @@ import { MutableRefObject, useCallback, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { setOpenGallery } from "../../../features/gallery/gallery.slice";
 import { useDraggable } from "react-use-draggable-scroll";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { altNoImage } from "../../../assets/img";
 
 interface BackdropModalProps {
   backdrops: IBackdrop[];
@@ -40,12 +42,15 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
           <li
             key={backdrop.file_path}
             className="h-[180px] min-w-[300px] overflow-hidden"
+            onClick={() => onImageClickHandler(backdrop.file_path)}
           >
-            <img
-              className="h-full w-full cursor-zoom-in object-contain transition-all duration-300 hover:scale-[1.03]"
+            <LazyLoadImage
+              className="h-full w-full object-cover object-center"
               src={backdrop.file_path}
-              alt=""
-              onClick={() => onImageClickHandler(backdrop.file_path)}
+              effect="opacity"
+              placeholderSrc={altNoImage}
+              width="100%"
+              height="100%"
             />
           </li>
         ))}

@@ -12,7 +12,7 @@ interface CarouselProps {
 export const Carousel = ({ list, linkPath }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
-  const itemWidth = 220;
+  const itemWidth = document.querySelector("#list-item")?.clientWidth!!;
 
   useEffect(() => {
     const carouselWindow = document.querySelector("#carousel-list");
@@ -44,14 +44,14 @@ export const Carousel = ({ list, linkPath }: CarouselProps) => {
   };
 
   return (
-    <div className="relative h-[300px] w-full overflow-hidden">
+    <div className="relative h-[auto] w-full overflow-hidden">
       <ul
         id="carousel-list"
         className="transition:transform flex h-full w-full duration-300"
         style={{ transform: `translateX(${pos}px)` }}
       >
         {list.map((movie) => (
-          <li id="carousel-list-item" key={movie.id + movie.vote_count}>
+          <li id="list-item" key={movie.id + movie.vote_count}>
             <Link to={`${linkPath}/${movie.id}`}>
               <Card
                 title={"title" in movie ? movie.title : movie.name}

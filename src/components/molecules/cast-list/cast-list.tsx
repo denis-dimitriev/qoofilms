@@ -7,7 +7,7 @@ interface CastListProps {
 }
 
 export const CastList = ({ cast }: CastListProps) => {
-  const topActors: ICast[] = cast.slice(0, 10);
+  const topActors: ICast[] = cast.slice(0, 9);
 
   return (
     <div className="flex h-[600px] min-w-[130px] flex-col items-start overflow-scroll scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-500 tablet-sm:w-full tablet-sm:items-center tablet:h-auto">

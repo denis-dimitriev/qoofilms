@@ -2,6 +2,8 @@ import { MutableRefObject, useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { Tag } from "../../atoms";
 import { IPoster } from "../../../types/images";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { altNoImage } from "../../../assets/img";
 
 interface PosterListProps {
   posters: IPoster[];
@@ -27,10 +29,13 @@ export const PosterList = ({ posters }: PosterListProps) => {
             key={backdrop.file_path}
             className="h-[310px] min-w-[200px] cursor-grab"
           >
-            <img
-              className="h-[300px] w-full object-contain"
+            <LazyLoadImage
+              className="h-full w-full object-cover object-center"
               src={backdrop.file_path}
-              alt=""
+              effect="opacity"
+              placeholderSrc={altNoImage}
+              width="100%"
+              height="100%"
             />
           </li>
         ))}
