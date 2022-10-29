@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Footer, Header } from "../organisms";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch } from "../../hooks/redux";
 import { setHiddenHeader } from "../../features/header/header.slice";
 
 export const Layout = () => {
   const dispatch = useAppDispatch();
 
-  const handleScroll = (event: WheelEvent) => {
+  const handleScroll = useCallback((event: WheelEvent) => {
     const windowsHeight = window.innerHeight;
     const layoutHeight = document.getElementById("layout")?.offsetHeight;
     if (!layoutHeight) {
@@ -18,7 +18,7 @@ export const Layout = () => {
         ? dispatch(setHiddenHeader(true))
         : dispatch(setHiddenHeader(false));
     }
-  };
+  }, []);
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -33,7 +33,7 @@ export const Layout = () => {
       layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);
     };
-  }, [dispatch, handleScroll]);
+  }, [dispatch]);
 
   return (
     <div

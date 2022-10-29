@@ -9,7 +9,12 @@ export const Footer = () => {
         <p className="w-1/4 tablet:hidden">
           I thank so much developers who give me a access to this api
         </p>
-        <a href="https://www.themoviedb.org" target="_blank">
+        /* eslint-disable react/jsx-no-target-blank */
+        <a
+          href="https://www.themoviedb.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img className="w-[200px]" src={tmdbLogo} alt="TMDB" />
         </a>
       </div>
