@@ -4,6 +4,7 @@ import { ReactComponent as ArrowLeftIcon } from "./left-arrow.svg";
 import { ReactComponent as ArrowRightIcon } from "./right-arrow.svg";
 import { ReactComponent as HamburgerIcon } from "./hamburger.svg";
 import { ReactComponent as StarIcon } from "./star.svg";
+import { ReactComponent as FilterIcon } from "./filter.svg";
 
 export {
   CloseIcon,
@@ -12,4 +13,5 @@ export {
   ArrowRightIcon,
   HamburgerIcon,
   StarIcon,
+  FilterIcon,
 };

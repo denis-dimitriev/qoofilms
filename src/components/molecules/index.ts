@@ -7,3 +7,4 @@ export * from "./cast-list/cast-list";
 export * from "./crew-list/crew-list";
 export * from "./poster-list/poster-list";
 export * from "./mobile-menu/mobile-menu";
+export * from "./filter/filter";
