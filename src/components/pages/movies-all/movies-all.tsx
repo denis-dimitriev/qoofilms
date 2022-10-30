@@ -1,32 +1,43 @@
-import { useAppDispatch } from "../../../hooks/redux";
-import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import { useEffect } from "react";
 import { setHiddenHeader } from "../../../features/header/header.slice";
 import { Error, Spinner, Title } from "../../atoms";
-import { useGetMovieDiscoverQuery } from "../../../services/api/tmdbMovies";
+import { useLazyGetMovieDiscoverQuery } from "../../../services/api/tmdbMovies";
 import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
 import { useCombineData } from "../../../hooks/useCombineData";
 import { Filter } from "../../molecules";
+import { setFilter } from "../../../features/filter/filter.slice";
+
+/*
+I had a problem with sorting data. To get the fresh data need to refresh page browser.
+I decited to save user wish in local storage, force refresh page and activate new request
+*/
 
 export const MoviesAll = () => {
-  const [filter, setFilter] = useState<string>("popularity.desc");
-
-  console.log(filter);
+  const { filter } = useAppSelector((state) => state.filter);
 
   const { page, scrollNextPage } = useScrollNextPage();
-  const { isLoading, isError, error, data } = useGetMovieDiscoverQuery({
-    sortBy: "",
-    pageNumber: page,
-  });
-  const allMovies = useCombineData(data);
+  const [fetchMovies, { data, isLoading, isError, error }] =
+    useLazyGetMovieDiscoverQuery();
 
+  const allMovies = useCombineData(data);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const filterFromLocalStorage = JSON.parse(localStorage.getItem("sortBy")!!);
+    dispatch(setFilter(filterFromLocalStorage));
+  }, [filter, dispatch]);
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
   }, [dispatch]);
 
-  if (isLoading && !allMovies) {
+  useEffect(() => {
+    fetchMovies({ sort: filter, pageNumber: page });
+  }, [filter, page, fetchMovies]);
+
+  if (isLoading) {
     return <Spinner className="absolute top-[20%] left-[50%]" />;
   }
 
@@ -39,7 +50,7 @@ export const MoviesAll = () => {
       <div className="flex flex-col">
         <div className="flex w-full flex-col items-center gap-y-5">
           <Title>All movies</Title>
-          <Filter setFilter={setFilter} />
+          <Filter />
           <InfiniteScrolling
             data={allMovies}
             fetchNextPageData={scrollNextPage}

@@ -24,11 +24,15 @@ export const Layout = () => {
     let timeout: ReturnType<typeof setTimeout>;
     const layout = document.getElementById("layout");
     const windowsHeight = window.innerHeight;
-    layout?.addEventListener("wheel", (e: WheelEvent) => {
-      if (layout.offsetHeight > windowsHeight) {
-        timeout = setTimeout(() => handleScroll(e), 100);
-      }
-    });
+    layout?.addEventListener(
+      "wheel",
+      (e: WheelEvent) => {
+        if (layout.offsetHeight > windowsHeight) {
+          timeout = setTimeout(() => handleScroll(e), 100);
+        }
+      },
+      { passive: true }
+    );
     return () => {
       layout?.removeEventListener("wheel", handleScroll);
       clearTimeout(timeout);

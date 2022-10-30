@@ -3,6 +3,7 @@ import { IMovie, ServerResponse } from "../../types/general.types";
 import { IMovieDetails } from "../../types/movie-details";
 import { ServerCreditsResponse } from "../../types/credits";
 import { ServerImagesResponse } from "../../types/images";
+import { FilterType } from "../../features/filter/filter.slice";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
@@ -125,13 +126,13 @@ export const tmdbMovies = createApi({
     }),
     getMovieDiscover: builder.query<
       IMovie[],
-      { sortBy: string; pageNumber: number }
+      { sort: FilterType; pageNumber: number }
     >({
-      query: ({ sortBy, pageNumber }) => ({
+      query: ({ sort, pageNumber }) => ({
         url: "discover/movie",
         params: {
           ...tmdbQueryParams,
-          sort_by: sortBy,
+          sort_by: sort,
           page: pageNumber,
         },
       }),
@@ -149,5 +150,14 @@ export const {
   useLazyGetMovieDetailsQuery,
   useLazyGetMovieCreditsQuery,
   useLazyGetMovieImagesQuery,
-  useGetMovieDiscoverQuery,
+  useLazyGetMovieDiscoverQuery,
 } = tmdbMovies;
+
+/*
+ * Choose from one of the many available sort options.
+ *
+Choose from one of the many available sort options.
+
+Allowed Values: , popularity.asc, popularity.desc, release_date.asc, release_date.desc, revenue.asc, revenue.desc, primary_release_date.asc, primary_release_date.desc, original_title.asc, original_title.desc, vote_average.asc, vote_average.desc, vote_count.asc, vote_count.desc
+default: popularity.desc
+ * */

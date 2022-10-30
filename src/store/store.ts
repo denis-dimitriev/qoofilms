@@ -6,6 +6,7 @@ import searchSlice from "../features/search/search.slice";
 import mobileMenuSlice from "../features/mobile-menu/mobile-menu.slice";
 import gallerySlice from "../features/gallery/gallery.slice";
 import headerSlice from "../features/header/header.slice";
+import filterSlice from "../features/filter/filter.slice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     mobileMenu: mobileMenuSlice,
     gallery: gallerySlice,
     headerHidden: headerSlice,
+    filter: filterSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
