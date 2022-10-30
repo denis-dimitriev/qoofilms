@@ -45,7 +45,7 @@ export const BackdropList = ({ backdrops }: BackdropModalProps) => {
             onClick={() => onImageClickHandler(backdrop.file_path)}
           >
             <LazyLoadImage
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full cursor-zoom-in object-cover object-center"
               src={backdrop.file_path}
               effect="opacity"
               placeholderSrc={altNoImage}

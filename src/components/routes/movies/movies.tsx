@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import {
   MovieDetails,
+  MoviesAll,
   MoviesNowPlaying,
   MoviesPopular,
   MoviesTopRated,
@@ -14,6 +15,7 @@ export const Movies = () => {
       <Route path="top-rated" element={<MoviesTopRated />} />
       <Route path="popular" element={<MoviesPopular />} />
       <Route path="now-playing" element={<MoviesNowPlaying />} />
+      <Route path="all" element={<MoviesAll />} />
       <Route path=":id" element={<MovieDetails />} />
     </Routes>
   );

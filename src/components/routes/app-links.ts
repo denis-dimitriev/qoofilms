@@ -20,6 +20,10 @@ export const moviesLinks: LinksType[] = [
     name: "Now Playing",
     path: "movies/now-playing",
   },
+  {
+    name: "All Movies",
+    path: "movies/all",
+  },
 ];
 
 export const tvShowLinks: LinksType[] = [
@@ -34,5 +38,9 @@ export const tvShowLinks: LinksType[] = [
   {
     name: "Top Rated",
     path: "tv-shows/top-rated",
+  },
+  {
+    name: "All Tv Shows",
+    path: "tv-shows/all",
   },
 ];

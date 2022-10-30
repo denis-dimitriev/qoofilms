@@ -10,3 +10,5 @@ export * from "./tv-top-rated/tv-top-rated";
 export * from "./tv-on-the-air/tv-on-the-air";
 export * from "./movie-details/movie-details";
 export * from "./tv-show-details/tv-show-details";
+export * from "./movies-all/movies-all";
+export * from "./tv-shows-all/tv-shows-all";

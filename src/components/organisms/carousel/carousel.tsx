@@ -12,7 +12,7 @@ interface CarouselProps {
 export const Carousel = ({ list, linkPath }: CarouselProps) => {
   const [pos, setPos] = useState<number>(0);
   const [carouselWidth, setCarouselWidth] = useState<number>(0);
-  const itemWidth = document.querySelector("#list-item")?.clientWidth!!;
+  const itemWidth = document.querySelector("#list-item")?.clientWidth!! + 8;
 
   useEffect(() => {
     const carouselWindow = document.querySelector("#carousel-list");
@@ -47,7 +47,7 @@ export const Carousel = ({ list, linkPath }: CarouselProps) => {
     <div className="relative h-[auto] w-full overflow-hidden">
       <ul
         id="carousel-list"
-        className="transition:transform flex h-full w-full duration-300"
+        className="transition:transform flex h-full w-full gap-x-2 duration-300"
         style={{ transform: `translateX(${pos}px)` }}
       >
         {list.map((movie) => (
@@ -64,13 +64,13 @@ export const Carousel = ({ list, linkPath }: CarouselProps) => {
         ))}
       </ul>
       <button
-        className="group absolute top-[0] left-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
+        className="group absolute top-0 left-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
         onClick={onPrevClickHandler}
       >
         <ArrowLeftIcon className="w-[25px] fill-white transition-transform group-hover:scale-[1.5]" />
       </button>
       <button
-        className="group absolute  top-[0] right-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
+        className="group absolute top-0 right-0 z-10 flex h-full w-[40px] items-center justify-center bg-gray-400/20  transition-all duration-200 hover:bg-gray-900/60"
         onClick={onNextClickHandler}
       >
         <ArrowRightIcon className="w-[25px] fill-white transition-transform group-hover:scale-[1.5]" />

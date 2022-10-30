@@ -17,7 +17,7 @@ export const Gallery = ({ image }: GalleryProps) => {
         className="absolute top-[5%] right-[5%]"
         onClick={onCloseClickHandler}
       />
-      <div className="flex max-h-[80%] max-w-[80%] items-center justify-center">
+      <div className="flex max-h-[70%] max-w-[75%] items-center justify-center">
         <img className=" h-full w-full rounded shadow-lg" src={image} alt="" />
       </div>
     </div>

@@ -123,14 +123,20 @@ export const tmdbMovies = createApi({
         };
       },
     }),
-    getMovieDiscover: builder.query<any, void>({
-      query: () => ({
+    getMovieDiscover: builder.query<
+      IMovie[],
+      { sortBy: string; pageNumber: number }
+    >({
+      query: ({ sortBy, pageNumber }) => ({
         url: "discover/movie",
         params: {
           ...tmdbQueryParams,
-          sort_by: "vote_average.desc",
+          sort_by: sortBy,
+          page: pageNumber,
         },
       }),
+      transformResponse: (res: ServerResponse<IMovie>) =>
+        transformMovieResultWithImages(res.results),
     }),
   }),
 });
