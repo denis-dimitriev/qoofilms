@@ -13,6 +13,12 @@ const filterList = [
 export const MoviesFilter = () => {
   const { moviesFilter } = useAppSelector((state) => state.filter);
 
+  /*
+   * Got some dificults with filters, to filters sork need to restarge the page,
+   * temporary put filter value in local storage and force restart the page
+   * and get from there
+   * */
+
   const onFilterClickHandler = useCallback((filterValue: MovieFilterType) => {
     localStorage.setItem("moviesSortBy", JSON.stringify(filterValue));
     window.location.reload();
