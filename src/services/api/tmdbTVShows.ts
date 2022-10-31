@@ -9,6 +9,7 @@ import {
 import { ITVShowDetails } from "../../types/tv-show-details";
 import { ServerImagesResponse } from "../../types/images";
 import { ServerCreditsResponse } from "../../types/credits";
+import { TVShowFilterType } from "../../features/filter/filter.slice";
 
 const transformTVShowsResultWithImages = (arr: ITVShow[]) => {
   return arr.map((el) => {
@@ -109,6 +110,21 @@ export const tmdbTVShows = createApi({
         };
       },
     }),
+    getTVShowsDiscover: builder.query<
+      ITVShow[],
+      { sort: TVShowFilterType; pageNumber: number }
+    >({
+      query: ({ sort, pageNumber }) => ({
+        url: "discover/tv",
+        params: {
+          ...tmdbQueryParams,
+          sort_by: sort,
+          page: pageNumber,
+        },
+      }),
+      transformResponse: (res: ServerResponse<ITVShow>) =>
+        transformTVShowsResultWithImages(res.results),
+    }),
   }),
 });
 
@@ -119,4 +135,5 @@ export const {
   useLazyGetTVShowDetailsQuery,
   useLazyGetTVShowCreditsQuery,
   useLazyGetTVShowImagesQuery,
+  useLazyGetTVShowsDiscoverQuery,
 } = tmdbTVShows;

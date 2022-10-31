@@ -7,6 +7,7 @@ import mobileMenuSlice from "../features/mobile-menu/mobile-menu.slice";
 import gallerySlice from "../features/gallery/gallery.slice";
 import headerSlice from "../features/header/header.slice";
 import filterSlice from "../features/filter/filter.slice";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
   reducer: {
@@ -25,6 +26,8 @@ export const store = configureStore({
       .concat(tmdbTVShows.middleware)
       .concat(tmdbSearch.middleware),
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

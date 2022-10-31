@@ -3,7 +3,7 @@ import { IMovie, ServerResponse } from "../../types/general.types";
 import { IMovieDetails } from "../../types/movie-details";
 import { ServerCreditsResponse } from "../../types/credits";
 import { ServerImagesResponse } from "../../types/images";
-import { FilterType } from "../../features/filter/filter.slice";
+import { MovieFilterType } from "../../features/filter/filter.slice";
 
 export const API_KEY = "1655ca58bc63dc76eb67fe7a0f9f9ef7";
 export const BASE_URL = "https://api.themoviedb.org/3/";
@@ -126,7 +126,7 @@ export const tmdbMovies = createApi({
     }),
     getMovieDiscover: builder.query<
       IMovie[],
-      { sort: FilterType; pageNumber: number }
+      { sort: MovieFilterType; pageNumber: number }
     >({
       query: ({ sort, pageNumber }) => ({
         url: "discover/movie",

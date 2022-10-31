@@ -1,26 +1,39 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export type FilterType =
+export type MovieFilterType =
   | "popularity.desc"
   | "release_date.desc"
   | "revenue.desc"
   | "vote_average.desc";
 
+export type TVShowFilterType =
+  | "vote_average.desc"
+  | "first_air_date.desc"
+  | "popularity.desc";
+
 const initialState = {
-  filter: "popularity.desc" as FilterType,
+  moviesFilter: "popularity.desc" as MovieFilterType,
+  tvShowsFilter: "popularity.desc" as TVShowFilterType,
 };
 
 export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setFilter: (state, action: PayloadAction<FilterType>) => {
+    setMoviesFilter: (state, action: PayloadAction<MovieFilterType>) => {
       return {
-        filter: action.payload,
+        ...state,
+        moviesFilter: action.payload,
+      };
+    },
+    setTVShowsFilter: (state, action: PayloadAction<TVShowFilterType>) => {
+      return {
+        ...state,
+        tvShowsFilter: action.payload,
       };
     },
   },
 });
 
-export const { setFilter } = filterSlice.actions;
+export const { setMoviesFilter, setTVShowsFilter } = filterSlice.actions;
 export default filterSlice.reducer;
