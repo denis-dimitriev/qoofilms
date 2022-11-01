@@ -1,30 +1,26 @@
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
-import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
-import { useCombineData } from "../../../hooks/useCombineData";
 import { useEffect } from "react";
-import { setTVShowsFilter } from "../../../features/filter/filter.slice";
 import { setHiddenHeader } from "../../../features/header/header.slice";
 import { Error, Spinner, Title } from "../../atoms";
-import InfiniteScrolling from "../../organisms/infinite-scrolling/infinite-scrolling";
 import { useLazyGetTVShowsDiscoverQuery } from "../../../services/api/tmdbTVShows";
 import { TvShowsFilter } from "../../organisms";
+import { Card, PoorPagination } from "../../molecules";
+import { useScrollNextPage } from "../../../hooks/useScrollNextPage";
+import { Link, useLocation } from "react-router-dom";
 
 export const TvShowsAll = () => {
   const { tvShowsFilter } = useAppSelector((state) => state.filter);
 
-  const { page, scrollNextPage } = useScrollNextPage();
-  const [fetchTVShows, { data, isLoading, isError, error }] =
+  const [fetchTVShows, { data, isLoading, isError, error, isFetching }] =
     useLazyGetTVShowsDiscoverQuery();
 
-  const allTVShows = useCombineData(data);
+  const { page, scrollNextPage, scrollPrevPage } = useScrollNextPage();
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const filterFromLocalStorage = JSON.parse(
-      localStorage.getItem("tvShowsSortBy")!!
-    );
-    dispatch(setTVShowsFilter(filterFromLocalStorage));
-  }, [tvShowsFilter, dispatch]);
+  const location = useLocation();
+  const parentLocation = location.pathname.substring(
+    0,
+    location.pathname.length - 3
+  );
 
   useEffect(() => {
     dispatch(setHiddenHeader(false));
@@ -34,7 +30,7 @@ export const TvShowsAll = () => {
     fetchTVShows({ sort: tvShowsFilter, pageNumber: page });
   }, [tvShowsFilter, page, fetchTVShows]);
 
-  if (isLoading) {
+  if (isLoading || isFetching || !data) {
     return <Spinner className="absolute top-[20%] left-[50%]" />;
   }
 
@@ -48,11 +44,23 @@ export const TvShowsAll = () => {
         <div className="flex w-full flex-col items-center gap-y-5">
           <Title>All TV Shows</Title>
           <TvShowsFilter />
-          <InfiniteScrolling
-            data={allTVShows}
-            fetchNextPageData={scrollNextPage}
-            linkPath="movies"
-          />
+          {data.total_pages && (
+            <PoorPagination
+              onNextPage={scrollNextPage}
+              onPrevPage={scrollPrevPage}
+              currentPage={page}
+              totalPages={data.total_pages}
+            />
+          )}
+          <ul className="flex flex-wrap justify-center gap-x-1 gap-y-3">
+            {data?.results.map((el) => (
+              <li key={el.id}>
+                <Link to={`${parentLocation}${el.id}`}>
+                  <Card thumbnail={el.backdrop_path} title={el.name} />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

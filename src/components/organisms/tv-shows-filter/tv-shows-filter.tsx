@@ -1,6 +1,9 @@
 import { useCallback, useMemo } from "react";
-import { useAppSelector } from "../../../hooks/redux";
-import { TVShowFilterType } from "../../../features/filter/filter.slice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import {
+  setTVShowsFilter,
+  TVShowFilterType,
+} from "../../../features/filter/filter.slice";
 import { FilterList } from "../../molecules";
 
 const filterList = [
@@ -11,11 +14,12 @@ const filterList = [
 
 export const TvShowsFilter = () => {
   const { tvShowsFilter } = useAppSelector((state) => state.filter);
+  const dispatch = useAppDispatch();
 
-  const onFilterClickHandler = useCallback((filterValue: TVShowFilterType) => {
-    localStorage.setItem("tvShowsSortBy", JSON.stringify(filterValue));
-    window.location.reload();
-  }, []);
+  const onFilterClickHandler = useCallback(
+    (filterValue: TVShowFilterType) => dispatch(setTVShowsFilter(filterValue)),
+    [dispatch]
+  );
 
   useMemo(() => {
     filterList.forEach((el) => {

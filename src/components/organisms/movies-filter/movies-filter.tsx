@@ -1,6 +1,9 @@
 import { useCallback, useMemo } from "react";
-import { useAppSelector } from "../../../hooks/redux";
-import { MovieFilterType } from "../../../features/filter/filter.slice";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import {
+  MovieFilterType,
+  setMoviesFilter,
+} from "../../../features/filter/filter.slice";
 import { FilterList } from "../../molecules";
 
 const filterList = [
@@ -12,17 +15,12 @@ const filterList = [
 
 export const MoviesFilter = () => {
   const { moviesFilter } = useAppSelector((state) => state.filter);
+  const dispatch = useAppDispatch();
 
-  /*
-   * Got some dificults with filters, to filters sork need to restarge the page,
-   * temporary put filter value in local storage and force restart the page
-   * and get from there
-   * */
-
-  const onFilterClickHandler = useCallback((filterValue: MovieFilterType) => {
-    localStorage.setItem("moviesSortBy", JSON.stringify(filterValue));
-    window.location.reload();
-  }, []);
+  const onFilterClickHandler = useCallback(
+    (filterValue: MovieFilterType) => dispatch(setMoviesFilter(filterValue)),
+    [dispatch]
+  );
 
   useMemo(() => {
     filterList.forEach((el) => {

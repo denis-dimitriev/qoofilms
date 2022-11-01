@@ -125,7 +125,7 @@ export const tmdbMovies = createApi({
       },
     }),
     getMovieDiscover: builder.query<
-      IMovie[],
+      ServerResponse<IMovie>,
       { sort: MovieFilterType; pageNumber: number }
     >({
       query: ({ sort, pageNumber }) => ({
@@ -136,8 +136,12 @@ export const tmdbMovies = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<IMovie>) =>
-        transformMovieResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<IMovie>) => {
+        return {
+          ...res,
+          results: transformMovieResultWithImages(res.results),
+        };
+      },
     }),
   }),
 });
@@ -152,12 +156,3 @@ export const {
   useLazyGetMovieImagesQuery,
   useLazyGetMovieDiscoverQuery,
 } = tmdbMovies;
-
-/*
- * Choose from one of the many available sort options.
- *
-Choose from one of the many available sort options.
-
-Allowed Values: , popularity.asc, popularity.desc, release_date.asc, release_date.desc, revenue.asc, revenue.desc, primary_release_date.asc, primary_release_date.desc, original_title.asc, original_title.desc, vote_average.asc, vote_average.desc, vote_count.asc, vote_count.desc
-default: popularity.desc
- * */

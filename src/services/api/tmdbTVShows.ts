@@ -111,7 +111,7 @@ export const tmdbTVShows = createApi({
       },
     }),
     getTVShowsDiscover: builder.query<
-      ITVShow[],
+      ServerResponse<ITVShow>,
       { sort: TVShowFilterType; pageNumber: number }
     >({
       query: ({ sort, pageNumber }) => ({
@@ -122,8 +122,12 @@ export const tmdbTVShows = createApi({
           page: pageNumber,
         },
       }),
-      transformResponse: (res: ServerResponse<ITVShow>) =>
-        transformTVShowsResultWithImages(res.results),
+      transformResponse: (res: ServerResponse<ITVShow>) => {
+        return {
+          ...res,
+          results: transformTVShowsResultWithImages(res.results),
+        };
+      },
     }),
   }),
 });
